@@ -24,3 +24,7 @@ Route::post("/search", function(){
 Route::get("/item", function(){
     return view("item");
 })->name("item");
+
+Route::get("/instituciones", function(){
+    return view("instituciones");
+})->name("instituciones");

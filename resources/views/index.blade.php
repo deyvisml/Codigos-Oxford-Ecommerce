@@ -99,7 +99,7 @@
 
     <div class="bg-gray-200 border">
         <div
-            class="my-8 md:mx-32 sm:mx-10 mx-5 bg-white border-s-8 border-sky-600 flex items-center flex-wrap p-5 gap-x-10 gap-y-5 shadow">
+            class="my-8 md:mx-32 sm:mx-10 mx-5 bg-white border-s-4 border-sky-600 flex items-center flex-wrap p-5 gap-x-10 gap-y-5 shadow">
             <p class="block text-xl">Formas de pago</p>
 
             <ul class="flex flex-wrap md:gap-16 gap-5 md:justify-around justify-start items-center">
@@ -122,6 +122,40 @@
 
                 <li><img class="md:h-10 h-8 rounded"
                         src="https://seeklogo.com/images/P/plin-logo-967A4AF583-seeklogo.com.png" alt="">
+                </li>
+            </ul>
+        </div>
+
+        <div class="my-8 md:mx-32 sm:mx-10 mx-5 bg-white border-s-4 border-sky-600 p-5 shadow">
+            <p class="block font-semibold mb-3">Titulos o series</p>
+
+            <ul class="flex flex-wrap gap-2 gap-y-5 justify-start p-2">
+                <li class="">
+                    <a href=""
+                        class="rounded-md border-2 border-gray-300 bg-gray-200 p-2 px-4 hover:bg-gray-300 text-xs uppercase">Lorem,
+                        ipsum
+                        dolor.</a>
+                </li>
+
+                <li class="">
+                    <a href=""
+                        class="rounded-md border-2 border-gray-300 bg-gray-200 p-2 px-4 hover:bg-gray-300 text-xs uppercase">
+                        Lorem, ipsum dolor sit amet consectetur
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href=""
+                        class="rounded-md border-2 border-gray-300 bg-gray-200 p-2 px-4 hover:bg-gray-300 text-xs uppercase">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href=""
+                        class="rounded-md border-2 border-gray-300 bg-gray-200 p-2 px-4 hover:bg-gray-300 text-xs uppercase">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    </a>
                 </li>
             </ul>
         </div>
@@ -157,33 +191,29 @@
                     <ul class="splide__list">
 
                         <li class=" w-full splide__slide">
-                            <div class="border-2 border-gray-200 bg-white rounded-xl shadow p-3 sm:mx-2 mx-0 ">
-                                <a href="{{ route('item') }}" class="block">
+                            <div class="border-2 border-gray-200 bg-white rounded-xl shadow sm:mx-2 mx-0 hover:shadow-xl">
+                                <a href="{{ route('item') }}" class="block p-3 cursor-pointer">
                                     <div class="flex flex-col justify-center items-center text-center ">
                                         <div class="w-full h-44 flex justify-center items-center">
                                             <img src="https://picsum.photos/80/100" alt="imagen item"
                                                 class="object-contain h-full">
                                         </div>
-                                        <p class="text-sm pt-5 px-1 text-sky-900 h-24 hover:underline cursor-pointer">
-                                            English File Fourth Edition Student Book Pack Intermediate Plus
-                                        </p>
-                                        <p class="block text-start text-xs font-bold mb-2">
-                                            ISBN: <span class="font-normal">9780194720168</span>
-                                        </p>
-                                        <p class="text-2xl font-bold text-gray-800">
-                                            S/ 48
-                                        </p>
+
+                                        <div class="w-full text-start">
+                                            <p
+                                                class="text-sm font-semibold pt-5  text-sky-900 h-24 hover:underline cursor-pointer">
+                                                English File Fourth Edition Student Book Pack Intermediate Plus
+                                            </p>
+                                            <p
+                                                class="block text-start text-xs font-semibold mb-2 text-gray-600 cursor-pointer">
+                                                ISBN: <span class="font-normal">9780194720168</span>
+                                            </p>
+                                            <p class="text-2xl font-semibold text-gray-800 cursor-pointer">
+                                                S/ 48
+                                            </p>
+                                        </div>
                                     </div>
                                 </a>
-                                <button type="submit"
-                                    class="rounded bg-sky-700 py-2 w-full text-white mt-4 flex justify-center items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5 inline-block">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                                    </svg>
-                                    <p class="ms-2 cursor-pointer">Añadir al carrito</p>
-                                </button>
                             </div>
                         </li>
 

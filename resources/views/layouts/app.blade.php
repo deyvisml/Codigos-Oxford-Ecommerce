@@ -104,10 +104,16 @@
                 </li>
             </ul>
         </div>
+
         <!-- END dropdown component -->
 
         <div class="w-auto min-w-[150px] my-2 flex justify-end">
-            <a href="" class="text-gray-100 text-left">Ingresar / Registrarse</a>
+            @auth
+                <a href="/google-auth/logout" class="text-gray-100 text-left">Cerrar sesión</a>
+            @endauth
+            @guest
+                <a href="/google-auth/redirect" class="text-gray-100 text-left">Ingresar / Registrarse</a>
+            @endguest
         </div>
     </nav>
     <nav class="md:px-32 sm:px-10 px-5 bg-neutral-50 border-y-4 border-gray-300">

@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\LandingpageController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,7 @@ use Laravel\Socialite\Facades\Socialite; // google auth
 |
 */
 
-Route::get('/', [LandingpageController::class, "index"])->name("landingpage.index");
+Route::get('/', [HomeController::class, "index"])->name("home.index");
 
 // google auth
 Route::get('/google-auth/redirect', [LoginController::class, "index"])->name("login.index");
@@ -33,10 +34,8 @@ Route::get("/google-auth/logout", [LogoutController::class, "store"])->name("log
 
 Route::get("/search", [SearchController::class, "index"])->name("search.index");
 
+Route::get("/catalogo/{category:name}/{serie:name}/{product:isbn}", [ProductController::class, "index"])->name("products.show");
 
-Route::get("/item", function () {
-    return view("item");
-})->name("item");
 
 Route::get("/instituciones", function () {
     return view("instituciones");

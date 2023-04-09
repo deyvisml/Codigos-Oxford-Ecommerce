@@ -20,7 +20,7 @@ class SearchController extends Controller
             $query->orWhere($column, 'LIKE', '%' . $request->keyword . '%');
         }
 
-        $products = $query->paginate(5);
+        $products = $query->paginate(20);
 
         return view("search", ["products" => $products, "keyword" => $request->keyword]);
     }

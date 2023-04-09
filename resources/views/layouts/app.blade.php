@@ -34,7 +34,7 @@
 
 <body class="">
 
-    <nav class="flex flex-wrap justify-between md:px-32 sm:px-10 px-4 items-center py-4 bg-sky-900 gap-x-4">
+    <nav class="flex flex-wrap justify-between md:px-32 sm:px-10 px-4 items-center py-4 bg-sky-900 sm:gap-x-4 gap-x-2">
         <div class="flex items-center md:justify-between justify-center flex-wrap md:w-2/12 w-full bg-red-100">
             <a href="/" class="w-auto bg-red-100">
                 <img src="{{ asset('images/logo.png') }}" alt="imagen logo" class="h-10">
@@ -61,9 +61,9 @@
         </form>
 
         <!-- dropdown component -->
-        <div class="relative my-3 w-2/12 min-w-[200px]" data-te-dropdown-ref>
+        <div class="relative my-3 w-2/12 min-w-[180px]" data-te-dropdown-ref>
             <button
-                class="flex items-center whitespace-nowrap rounded bg-neutral-50 px-6 py-1.5 text-sm font-medium leading-normal text-neutral-800  transition duration-150 ease-in-out hover:bg-neutral-100  focus:bg-neutral-100 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] motion-reduce:transition-none"
+                class="flex items-center whitespace-nowrap rounded bg-neutral-50 px-4 py-1.5 text-sm font-medium leading-normal text-neutral-800  transition duration-150 ease-in-out hover:bg-neutral-100  focus:bg-neutral-100 focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] motion-reduce:transition-none"
                 type="button" id="dropdownMenuButton9" data-te-dropdown-toggle-ref aria-expanded="false"
                 data-te-ripple-init>
                 Soy estudiante
@@ -104,7 +104,6 @@
                 </li>
             </ul>
         </div>
-
         <!-- END dropdown component -->
 
         <div class="w-auto min-w-[150px] my-2 flex justify-end">
@@ -118,20 +117,20 @@
     </nav>
     <nav class="md:px-32 sm:px-10 px-5 bg-neutral-50 border-y-4 border-gray-300">
         <ul class=" flex flex-wrap justify-start text-sm">
-            <li class="">
-                <a href=""
-                    class="text-gray-900 block p-1.5 px-4 hover:text-black hover:bg-neutral-200">Pre-School
-                    Children</a>
-            </li>
-            <li class="">
-                <a href="" class="text-gray-900 block p-1.5 px-4 hover:text-black hover:bg-neutral-200">Young
-                    Learners</a>
-            </li>
-            <li class="">
-                <a href=""
-                    class="text-gray-900 block p-1.5 px-4 hover:text-black hover:bg-neutral-200">Secundaria y
-                    Bachillerato</a>
-            </li>
+            @php
+                // mala practica pero no pude crear una controlador para esta vista template
+                use App\Models\Category;
+                // get categories
+                $categories = Category::limit(5)->get();
+            @endphp
+
+            @foreach ($categories as $category)
+                <li class="">
+                    <a href="" class="text-gray-900 block p-1 px-4 hover:text-black hover:bg-neutral-200">
+                        {{ $category->name }}
+                    </a>
+                </li>
+            @endforeach
         </ul>
     </nav>
 

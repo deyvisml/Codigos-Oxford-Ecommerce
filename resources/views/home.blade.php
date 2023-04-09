@@ -129,34 +129,15 @@
         <div class="my-8 md:mx-32 sm:mx-10 mx-5 bg-white border-s-4 border-sky-600 p-5 shadow">
             <p class="block font-semibold mb-3">Titulos o series</p>
 
-            <ul class="flex flex-wrap gap-2 gap-y-5 justify-start p-2">
-                <li class="">
-                    <a href=""
-                        class="rounded-md border-2 border-gray-300 bg-gray-200 p-2 px-4 hover:bg-gray-300 text-xs uppercase">Lorem,
-                        ipsum
-                        dolor.</a>
-                </li>
-
-                <li class="">
-                    <a href=""
-                        class="rounded-md border-2 border-gray-300 bg-gray-200 p-2 px-4 hover:bg-gray-300 text-xs uppercase">
-                        Lorem, ipsum dolor sit amet consectetur
-                    </a>
-                </li>
-
-                <li class="">
-                    <a href=""
-                        class="rounded-md border-2 border-gray-300 bg-gray-200 p-2 px-4 hover:bg-gray-300 text-xs uppercase">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    </a>
-                </li>
-
-                <li class="">
-                    <a href=""
-                        class="rounded-md border-2 border-gray-300 bg-gray-200 p-2 px-4 hover:bg-gray-300 text-xs uppercase">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    </a>
-                </li>
+            <ul class="flex flex-wrap gap-2 gap-y-5 justify-start sm:p-2 px-0">
+                @foreach ($series as $serie)
+                    <li class="">
+                        <a href=""
+                            class="rounded-md border-2 border-gray-300 bg-gray-200 p-2 sm:px-4 hover:bg-gray-300 text-xs uppercase">
+                            {{ $serie->name }}
+                        </a>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </div>
@@ -164,98 +145,73 @@
 
 
     <div class="bg-gray-100">
-        <div class="py-5 md:px-32 px-10  bg-gray-50">
-            <a href="" class="hover:underline cursor-pointer decoration-gray-500">
-                <h2 class="text-2xl font-semibold text-gray-500 cursor-pointer inline" id="section1">
-                    Oxford Online Skills Program
-                </h2>
-            </a>
-            <div class="splide" id="splide-1">
-                <div class="splide__arrows">
-                    <button class="bg-gray-900 shadow splide__arrow splide__arrow--prev">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6 text-white">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                        </svg>
-                    </button>
-                    <button class="bg-gray-900 shadow splide__arrow splide__arrow--next">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6 text-white">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="splide__track my-4">
-                    <ul class="splide__list">
+        @php
+            $i = 1;
+        @endphp
+        @foreach ($group_products as $group_product)
+            <div class="py-5 md:px-32 px-10 @if ($i % 2 == 0) bg-gray-200 @else bg-gray-100 @endif">
+                <a href="" class="hover:underline cursor-pointer decoration-gray-500">
+                    <h2 class="text-2xl font-semibold text-gray-500 cursor-pointer inline" id="section1">
+                        {{ $group_product['serie'] }}
+                    </h2>
+                </a>
+                <div class="splide" id="splide-{{ $i }}">
+                    <div class="splide__arrows">
+                        <button class="bg-gray-900 shadow splide__arrow splide__arrow--prev">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6 text-white">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                            </svg>
+                        </button>
+                        <button class="bg-gray-900 shadow splide__arrow splide__arrow--next">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6 text-white">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="splide__track my-4">
+                        <ul class="splide__list">
+                            @foreach ($group_product['products'] as $product)
+                                <li class=" w-full splide__slide">
+                                    <div
+                                        class="border-2 border-gray-200 bg-white rounded-xl shadow sm:mx-2 mx-0 hover:shadow-xl">
+                                        <a href="{{ route('products.show', ['category' => $product, 'serie' => $product, 'product' => $product]) }}"
+                                            class="block p-3 cursor-pointer">
+                                            <div class="flex flex-col justify-center items-center text-center ">
+                                                <div class="w-full h-44 flex justify-center items-center">
+                                                    <img src="https://picsum.photos/80/100" alt="imagen item"
+                                                        class="object-contain h-full">
+                                                </div>
 
-                        <li class=" w-full splide__slide">
-                            <div class="border-2 border-gray-200 bg-white rounded-xl shadow sm:mx-2 mx-0 hover:shadow-xl">
-                                <a href="{{ route('item') }}" class="block p-3 cursor-pointer">
-                                    <div class="flex flex-col justify-center items-center text-center ">
-                                        <div class="w-full h-44 flex justify-center items-center">
-                                            <img src="https://picsum.photos/80/100" alt="imagen item"
-                                                class="object-contain h-full">
-                                        </div>
-
-                                        <div class="w-full text-start">
-                                            <p
-                                                class="text-sm font-semibold pt-5  text-sky-900 h-24 hover:underline cursor-pointer">
-                                                English File Fourth Edition Student Book Pack Intermediate Plus
-                                            </p>
-                                            <p
-                                                class="block text-start text-xs font-semibold mb-2 text-gray-600 cursor-pointer">
-                                                ISBN: <span class="font-normal">9780194720168</span>
-                                            </p>
-                                            <p class="text-2xl font-semibold text-gray-800 cursor-pointer">
-                                                S/ 48
-                                            </p>
-                                        </div>
+                                                <div class="w-full text-start">
+                                                    <p
+                                                        class="text-sm font-semibold pt-5  text-sky-900 h-24 hover:underline cursor-pointer">
+                                                        {{ $product->name }}
+                                                    </p>
+                                                    <p
+                                                        class="block text-start text-xs font-semibold mb-2 text-gray-600 cursor-pointer">
+                                                        ISBN: <span class="font-normal">{{ $product->isbn }}</span>
+                                                    </p>
+                                                    <p class="text-2xl font-semibold text-gray-800 cursor-pointer">
+                                                        {{ $product->price_usd }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                        </li>
-
-                    </ul>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-
-
-        <div class="py-5 md:px-32 px-10  bg-gray-100">
-            <a href="" class="hover:underline cursor-pointer decoration-gray-500">
-                <h2 class="text-2xl font-semibold text-gray-500 cursor-pointer inline" id="section1">
-                    Oxford Online Skills Program
-                </h2>
-            </a>
-            <div class="splide" id="splide-2">
-                <div class="splide__arrows">
-                    <button class="bg-gray-900 shadow splide__arrow splide__arrow--prev">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6 text-white">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                        </svg>
-                    </button>
-                    <button class="bg-gray-900 shadow splide__arrow splide__arrow--next">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6 text-white">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="splide__track my-4">
-                    <ul class="splide__list">
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-
-
+            @php
+                $i++;
+            @endphp
+        @endforeach
     </div>
 @endsection
 
@@ -265,45 +221,25 @@
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 
     <script>
-        const splide1 = new Splide('#splide-1', {
-            perPage: 5,
-            breakpoints: {
-                640: {
-                    perPage: 1,
+        for (let i = 1; i <= 5; i++) {
+            const splide = new Splide(`#splide-${i}`, {
+                perPage: 5,
+                breakpoints: {
+                    640: {
+                        perPage: 1,
+                    },
+                    880: {
+                        perPage: 2,
+                    },
+                    1100: {
+                        perPage: 3
+                    },
+                    1300: {
+                        perPage: 4
+                    }
                 },
-                880: {
-                    perPage: 2,
-                },
-                1100: {
-                    perPage: 3
-                },
-                1300: {
-                    perPage: 4
-                }
-            },
-        });
-
-        splide1.mount();
-
-
-        const splide2 = new Splide('#splide-2', {
-            perPage: 5,
-            breakpoints: {
-                640: {
-                    perPage: 1,
-                },
-                880: {
-                    perPage: 2,
-                },
-                1100: {
-                    perPage: 3
-                },
-                1300: {
-                    perPage: 4
-                }
-            },
-        });
-
-        splide2.mount();
+            });
+            splide.mount();
+        }
     </script>
 @endpush

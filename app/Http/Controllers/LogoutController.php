@@ -10,6 +10,6 @@ class LogoutController extends Controller
     {
         auth()->logout();
 
-        return redirect()->route("landingpage.index");
+        return redirect()->route("home.index");
     }
 }

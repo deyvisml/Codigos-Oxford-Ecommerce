@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i = 1; $i <= 20; $i++) {
+        for ($i = 1; $i <= 200; $i++) {
             Product::create([
                 'name' => $faker->sentence(),
                 'isbn'  => (string) $faker->numberBetween(111111111, 999999999) . "",

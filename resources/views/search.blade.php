@@ -8,13 +8,13 @@
     <div class="my-8 md:mx-32 sm:mx-10 mx-5">
         <div class="mb-5 border-b-2">
             <p class="text-2xl">Busqueda: <span class="font-semibold">{{ $keyword }}</span></p>
-            <p class="py-2">{{ $products->count() }} resultados</p>
+            <p class="py-2">{{ $products->total() }} resultados</p>
         </div>
 
         <div class="">
             <ul class="flex justify-start items-baseline flex-wrap gap-y-4 bg-gray-200 py-4 px-2 mb-3">
 
-                @if ($products->count() > 0)
+                @if ($products->total() > 0)
                     @foreach ($products as $product)
                         <li class="md:w-1/5 sm:w-1/2 w-full min-w-[200px]">
                             <div class="border-2 border-gray-200 bg-white rounded-xl shadow sm:mx-2 mx-0 hover:shadow-xl">
@@ -47,7 +47,8 @@
                 @endif
             </ul>
 
-            {{ $products->links() }}
+            {{ $products->appends($_GET)->render() }}
+            <!-- https://stackoverflow.com/a/50957867/15694873-->
         </div>
 
     </div>

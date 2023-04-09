@@ -39,7 +39,11 @@
         <div class="flex gap-x-3">
             <a href="/" class="text-sky-800 hover:underline">Inicio</a>
             <p>/</p>
-            <a href="/" class="text-sky-800 hover:underline">Categoria X</a>
+            <a href="/" class="text-sky-800 hover:underline">Catalogo</a>
+            <p>/</p>
+            <a href="/" class="text-sky-800 hover:underline">Adults</a>
+            <p>/</p>
+            <a href="/" class="text-sky-800 hover:underline">American Englih File</a>
         </div>
 
         <h2 class="text-2xl font-semibold mt-5 border-b-2 pb-3">

@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\LandingpageController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\SearchController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -16,47 +20,24 @@ use Laravel\Socialite\Facades\Socialite; // google auth
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [LandingpageController::class, "index"])->name("landingpage.index");
 
 // google auth
-Route::get('/google-auth/redirect', function () {
-    return Socialite::driver('google')->redirect();
-});
- 
-Route::get('/google-auth/callback', function () {
- 
-    $google_user = Socialite::driver('google')->user();
- 
-    $user = User ::updateOrCreate([
-        'google_id' => $google_user->id,
-    ], [
-        'name' => $google_user->name,
-        'email' => $google_user->email
-    ]);
- 
-    Auth::login($user);
- 
-    return redirect('/');
-});
+Route::get('/google-auth/redirect', [LoginController::class, "index"])->name("login.index");
+
+Route::get('/google-auth/callback', [LoginController::class, "store"]);
+
+Route::get("/google-auth/logout", [LogoutController::class, "store"])->name("logout");
 // end google auth
 
-Route::get("/google-auth/logout", function(){
-    auth()->logout();
 
-    return redirect('/');
-})->name("logout");
+Route::get("/search", [SearchController::class, "index"])->name("search.index");
 
 
-Route::post("/search", function(){
-    return view("search");
-})->name("search");
-
-Route::get("/item", function(){
+Route::get("/item", function () {
     return view("item");
 })->name("item");
 
-Route::get("/instituciones", function(){
+Route::get("/instituciones", function () {
     return view("instituciones");
 })->name("instituciones");

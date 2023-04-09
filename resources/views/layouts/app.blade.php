@@ -41,13 +41,13 @@
             </a>
         </div>
 
-        <form action="{{ route('search') }}" method="post"
+        <form action="{{ route('search.index') }}" method="get"
             class="search-container md:w-5/12 w-full sm:min-w-[400px] md:my-0 mt-3 flex items-center justify-center">
-            @csrf
+
             <div
                 class="md:w-full w-full rounded flex items-center border-y border-s overflow-hidden border-cyan-700  shadow-[0_4px_9px_-4px_#fbfbfb] ">
-                <input type="text" placeholder="Buscar por titulo, ISBN, etc." class="w-11/12 p-2 outline-none"
-                    autofocus>
+                <input type="text" name="keyword" placeholder="Buscar por titulo, ISBN, etc."
+                    class="w-11/12 p-2 outline-none" autofocus required>
 
                 <button type="submit" data-te-ripple-init data-te-ripple-color="dark"
                     class="flex justify-center bg-neutral-200 py-2 px-4 cursor-pointer hover:bg-neutral-300">
@@ -142,6 +142,7 @@
     <footer class="mt-10 h-24 bg-sky-200 flex justify-center items-center">
         <p class="text-center">Todos los derechos reservados 2023 ©</p>
     </footer>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>

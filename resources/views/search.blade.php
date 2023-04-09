@@ -18,10 +18,11 @@
                     @foreach ($products as $product)
                         <li class="md:w-1/5 sm:w-1/2 w-full min-w-[200px]">
                             <div class="border-2 border-gray-200 bg-white rounded-xl shadow sm:mx-2 mx-0 hover:shadow-xl">
-                                <a href="{{ route('item') }}" class="block p-3 cursor-pointer">
+                                <a href="{{ route('products.index', ['product' => $product]) }}"
+                                    class="block p-3 cursor-pointer">
                                     <div class="flex flex-col justify-center items-center text-center ">
                                         <div class="w-full h-44 flex justify-center items-center">
-                                            <img src="{{ $product->image }}" alt="imagen item"
+                                            <img src="{{ $product->image }}" alt="product image"
                                                 class="object-contain h-full">
                                         </div>
 

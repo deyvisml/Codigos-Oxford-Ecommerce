@@ -18,4 +18,15 @@ class Serie extends Model
     {
         return $this->hasMany(Level::class);
     }
+
+    // problem with route model bidding custom keys https://stackoverflow.com/a/61073459/15694873
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class)->select(["id", "name"]);
+    }
 }

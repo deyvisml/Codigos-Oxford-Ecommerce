@@ -152,7 +152,7 @@
             <div class="py-5 md:px-32 px-10 @if ($i % 2 == 0) bg-gray-200 @else bg-gray-100 @endif">
                 <a href="" class="hover:underline cursor-pointer decoration-gray-500">
                     <h2 class="text-2xl font-semibold text-gray-500 cursor-pointer inline" id="section1">
-                        {{ $group_product['serie'] }}
+                        {{ $group_product['serie']->name }}
                     </h2>
                 </a>
                 <div class="splide" id="splide-{{ $i }}">
@@ -178,7 +178,7 @@
                                 <li class=" w-full splide__slide">
                                     <div
                                         class="border-2 border-gray-200 bg-white rounded-xl shadow sm:mx-2 mx-0 hover:shadow-xl">
-                                        <a href="{{ route('products.show', ['category' => $product, 'serie' => $product, 'product' => $product]) }}"
+                                        <a href="{{ route('products.index', ['product' => $product]) }}"
                                             class="block p-3 cursor-pointer">
                                             <div class="flex flex-col justify-center items-center text-center ">
                                                 <div class="w-full h-44 flex justify-center items-center">

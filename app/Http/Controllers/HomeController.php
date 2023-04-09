@@ -27,13 +27,17 @@ class HomeController extends Controller
 
         for ($i = 0; $i < count($series_selected); $i++) {
             $group_products[$i] = array();
-            $group_products[$i]["serie"] = $series_selected[$i];
-            $products =   Product::join("levels", "products.level_id", "=", "levels.id")
+
+            $group_products[$i]["products"] =   Product::join("levels", "products.level_id", "=", "levels.id")
                 ->join("series", "levels.serie_id", "=", "series.id")
                 ->where("series.name", $series_selected[$i])
                 ->get();
 
-            $group_products[$i]["products"] = $products;
+            $group_products[$i]["serie"] = Serie::where("name", $series_selected[$i])->first();
+
+            $group_products[$i]["category"] = Category::find($group_products[$i]["serie"]->category_id)->first();
+
+            // dd($group_products[$i]);
         }
 
         return view("home", ["series" => $series, "group_products" => $group_products]);

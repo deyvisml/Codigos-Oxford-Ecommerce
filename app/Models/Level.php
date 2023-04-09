@@ -18,4 +18,9 @@ class Level extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function serie()
+    {
+        return $this->belongsTo(Serie::class)->select(["id", "name"]);
+    }
 }

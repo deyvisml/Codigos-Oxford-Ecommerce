@@ -34,6 +34,18 @@
 
 <body class="">
 
+    @php
+        // mala practica pero no pude crear una controlador para esta vista template
+        use App\Models\Country;
+        use App\Models\Category;
+        
+        // get  countries
+        $countries = Country::get();
+        
+        // get categories
+        $categories = Category::limit(5)->get();
+    @endphp
+
     <nav class="flex flex-wrap justify-between md:px-32 sm:px-10 px-4 items-center py-4 bg-sky-900 sm:gap-x-4 gap-x-2">
         <div class="flex items-center md:justify-between justify-center flex-wrap md:w-2/12 w-full bg-red-100">
             <a href="/" class="w-auto bg-red-100">
@@ -83,25 +95,16 @@
             </button>
             <ul class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                 aria-labelledby="dropdownMenuButton9" data-te-dropdown-menu-ref>
-                <li>
-                    <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                        href="{{ route('instituciones') }}" data-te-dropdown-item-ref>Instituciones México
-                        <img src="{{ asset('images/country-flags/mexico.png') }}" class="w-7 h-7 inline-block ms-2 mb-1"
-                            alt="">
-                    </a>
-                </li>
-                <li>
-                    <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                        href="#" data-te-dropdown-item-ref>Instituciones Perú
-
-                        <img src="{{ asset('images/country-flags/peru.png') }}" class="w-6 h-6 inline-block ms-2 mb-1"
-                            alt="">
-                    </a>
-                </li>
-                <li>
-                    <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                        href="#" data-te-dropdown-item-ref>Otras instituciones</a>
-                </li>
+                @foreach ($countries as $country)
+                    <li>
+                        <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                            href="{{ route('schools.index', ['country' => $country]) }}" data-te-dropdown-item-ref>
+                            {{ $country->name }}
+                            <img src="{{ asset('images/country-flags/peru.png') }}"
+                                class="w-6 h-6 inline-block ms-2 mb-1" alt="">
+                        </a>
+                    </li>
+                @endforeach
             </ul>
         </div>
         <!-- END dropdown component -->
@@ -117,16 +120,11 @@
     </nav>
     <nav class="md:px-32 sm:px-10 px-5 bg-neutral-50 border-y-4 border-gray-300">
         <ul class=" flex flex-wrap justify-start text-sm">
-            @php
-                // mala practica pero no pude crear una controlador para esta vista template
-                use App\Models\Category;
-                // get categories
-                $categories = Category::limit(5)->get();
-            @endphp
-
             @foreach ($categories as $category)
-                <li class="">
-                    <a href="" class="text-gray-900 block p-1 px-4 hover:text-black hover:bg-neutral-200">
+                <li
+                    class="{{ isset($current_category) ? ($category->id === $current_category->id ? 'bg-neutral-200' : '') : '' }} sm:w-auto w-full">
+                    <a href="{{ route('series.index', ['category' => $category]) }}"
+                        class="text-gray-900 block p-1 px-4 hover:text-black hover:bg-neutral-200">
                         {{ $category->name }}
                     </a>
                 </li>

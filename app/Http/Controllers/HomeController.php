@@ -15,31 +15,30 @@ class HomeController extends Controller
         $series = Serie::inRandomOrder()->limit(8)->get();
 
         // get products from 5 diferent series
-        $series_selected = [
-            "Quis dolores laudantium aperiam vel dolores aut.",
-            "Perferendis ratione neque quod sunt.",
-            "Perferendis ratione neque quod sunt.",
-            "Perferendis ratione neque quod sunt.",
-            "Aut repellendus aspernatur deleniti sint nam."
-        ];
+        $id_series_selected = [62, 63, 64, 65, 66];
 
         $group_products = array();
 
-        for ($i = 0; $i < count($series_selected); $i++) {
+        for ($i = 0; $i < count($id_series_selected); $i++) {
             $group_products[$i] = array();
 
-            $group_products[$i]["products"] =   Product::join("levels", "products.level_id", "=", "levels.id")
+            $group_products[$i]["serie"] = Serie::find($id_series_selected[$i]);
+
+            $group_products[$i]["products"] =
+                $test = Product::join("levels", "products.level_id", "=", "levels.id")
                 ->join("series", "levels.serie_id", "=", "series.id")
-                ->where("series.name", $series_selected[$i])
+                ->where("series.id", $id_series_selected[$i])
+                ->select("products.*")
                 ->get();
-
-            $group_products[$i]["serie"] = Serie::where("name", $series_selected[$i])->first();
-
-            $group_products[$i]["category"] = Category::find($group_products[$i]["serie"]->category_id)->first();
-
-            // dd($group_products[$i]);
         }
 
         return view("home", ["series" => $series, "group_products" => $group_products]);
+    }
+
+    public function serie(Serie $serie)
+    {
+        $category = $serie->category;
+
+        return redirect()->route("series.show", ["category" => $category, "serie" => $serie]);
     }
 }

@@ -36,23 +36,33 @@
 
 @section('content')
     <div class="my-8 md:mx-32 sm:mx-10 mx-5">
-        <div class="flex gap-x-3">
-            <a href="/" class="text-sky-800 hover:underline">Inicio</a>
-            <p>/</p>
-            <a href="/" class="text-sky-800 hover:underline">Catalogo</a>
-            <p>/</p>
-            <a href="/" class="text-sky-800 hover:underline">Adults</a>
-            <p>/</p>
-            <a href="/" class="text-sky-800 hover:underline">American Englih File</a>
+        <div class="flex gap-x-2 items-center flex-wrap sm:text-base text-sm">
+            <a href="{{ route('home.index') }}" class="text-sky-800 hover:underline">Inicio</a>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor"
+                class="w-3 h-3 mt-0.5 text-gray-600">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+
+            <a href="{{ route('series.index', ['category' => $category]) }}"
+                class="text-sky-800 hover:underline">{{ $category->name }}</a>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4"
+                stroke="currentColor" class="w-3 h-3 mt-0.5 text-gray-600">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+
+            <a href="{{ route('series.show', ['category' => $category, 'serie' => $serie]) }}"
+                class="text-sky-800 hover:underline">{{ $serie->name }}</a>
         </div>
 
         <h2 class="text-2xl font-semibold mt-5 border-b-2 pb-3">
-            English File Fourth Edition Elementary Online Practice
+            {{ $product->name }}
         </h2>
 
-        <div class="flex my-5 flex-wrap justify-around py-5">
+        <div class="flex my-5 flex-wrap justify-around py-5 items-start">
             <div class="md:w-52 border rounded flex justify-center items-center h-52 p-5">
-                <img src="https://picsum.photos/80/100" alt="" class="h-full object-contain">
+                <img src="{{ $product->image }}" alt="" class="h-full object-contain">
             </div>
 
             <div class="md:w-6/12 w-full md:m-5 mx-2 md:my-0 my-5 md:order-2 order-3">
@@ -62,19 +72,23 @@
                 <ul class="bg-white my-5 rounded">
                     <li class="flex border-b border-gray-300">
                         <p class="w-1/3 font-bold text-sm bg-gray-100 p-3">Edición</p>
-                        <p class="w-2/3 text-sm p-3 bg-gray-50">Lorem, ipsum dolor.</p>
+                        <p class="w-2/3 text-sm p-3 bg-gray-50">{{ $product->edition }}</p>
                     </li>
                     <li class="flex border-b border-gray-300">
-                        <p class="w-1/3 font-bold text-sm bg-gray-200 p-3">Edición</p>
-                        <p class="w-2/3 text-sm p-3 bg-gray-50">Lorem, ipsum dolor.</p>
+                        <p class="w-1/3 font-bold text-sm bg-gray-200 p-3">Formato</p>
+                        <p class="w-2/3 text-sm p-3 bg-gray-50">{{ $product->format }}</p>
                     </li>
                     <li class="flex border-b border-gray-300">
-                        <p class="w-1/3 font-bold text-sm bg-gray-100 p-3">Edición</p>
-                        <p class="w-2/3 text-sm p-3 bg-gray-50">Lorem, ipsum dolor.</p>
+                        <p class="w-1/3 font-bold text-sm bg-gray-100 p-3">Nivel</p>
+                        <p class="w-2/3 text-sm p-3 bg-gray-50">{{ $product->level_id }}</p>
                     </li>
                     <li class="flex border-b border-gray-300">
-                        <p class="w-1/3 font-bold text-sm bg-gray-200 p-3">Edición</p>
-                        <p class="w-2/3 text-sm p-3 bg-gray-50">Lorem, ipsum dolor.</p>
+                        <p class="w-1/3 font-bold text-sm bg-gray-200 p-3">Duración</p>
+                        <p class="w-2/3 text-sm p-3 bg-gray-50">{{ $product->licence_length }}</p>
+                    </li>
+                    <li class="flex border-b border-gray-300">
+                        <p class="w-1/3 font-bold text-sm bg-gray-100 p-3">ISBN</p>
+                        <p class="w-2/3 text-sm p-3 bg-gray-50">{{ $product->isbn }}</p>
                     </li>
 
                 </ul>
@@ -82,7 +96,7 @@
 
             <div
                 class="md:w-80 sm:w-auto md:my-0 my-5 w-full rounded bg-white shadow border-2 border-gray-100 p-4 md:order-3 order-2">
-                <p class="text-4xl font-semibold">S/ 40</p>
+                <p class="text-4xl font-semibold">{{ $product->price_usd }}</p>
                 <p class="my-3 text-sky-700 text-sm font-semibold">Stock disponible
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-5 h-5 mb-1 inline-block">
@@ -124,34 +138,36 @@
                 </div>
                 <div class="splide__track my-4">
                     <ul class="splide__list">
+                        @foreach ($similar_products as $similar_product)
+                            <li class=" w-full splide__slide">
+                                <div
+                                    class="border-2 border-gray-200 bg-white rounded-xl shadow sm:mx-2 mx-0 hover:shadow-xl">
+                                    <a href="{{ route('products.index', ['product' => $similar_product]) }}"
+                                        class="block p-3 cursor-pointer">
+                                        <div class="flex flex-col justify-center items-center text-center ">
+                                            <div class="w-full h-44 flex justify-center items-center">
+                                                <img src="https://picsum.photos/80/100" alt="imagen item"
+                                                    class="object-contain h-full">
+                                            </div>
 
-                        <li class=" w-full splide__slide">
-                            <div class="border-2 border-gray-200 bg-white rounded-xl shadow sm:mx-2 mx-0 hover:shadow-xl">
-                                <a href="{{ route('item') }}" class="block p-3 cursor-pointer">
-                                    <div class="flex flex-col justify-center items-center text-center ">
-                                        <div class="w-full h-44 flex justify-center items-center">
-                                            <img src="https://picsum.photos/80/100" alt="imagen item"
-                                                class="object-contain h-full">
+                                            <div class="w-full text-start">
+                                                <p
+                                                    class="text-sm font-semibold pt-5  text-sky-900 h-24 hover:underline cursor-pointer">
+                                                    {{ $similar_product->name }}
+                                                </p>
+                                                <p
+                                                    class="block text-start text-xs font-semibold mb-2 text-gray-600 cursor-pointer">
+                                                    ISBN: <span class="font-normal">{{ $similar_product->isbn }}</span>
+                                                </p>
+                                                <p class="text-2xl font-semibold text-gray-800 cursor-pointer">
+                                                    {{ $similar_product->price_usd }}
+                                                </p>
+                                            </div>
                                         </div>
-
-                                        <div class="w-full text-start">
-                                            <p
-                                                class="text-sm font-semibold pt-5  text-sky-900 h-24 hover:underline cursor-pointer">
-                                                English File Fourth Edition Student Book Pack Intermediate Plus
-                                            </p>
-                                            <p
-                                                class="block text-start text-xs font-semibold mb-2 text-gray-600 cursor-pointer">
-                                                ISBN: <span class="font-normal">9780194720168</span>
-                                            </p>
-                                            <p class="text-2xl font-semibold text-gray-800 cursor-pointer">
-                                                S/ 48
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </li>
-
+                                    </a>
+                                </div>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

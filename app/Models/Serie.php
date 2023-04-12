@@ -9,6 +9,12 @@ class Serie extends Model
 {
     use HasFactory;
 
+    // problem with route model bidding custom keys https://stackoverflow.com/a/61073459/15694873
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
+
     protected $fillable = [
         "name",
         "category_id"
@@ -19,10 +25,9 @@ class Serie extends Model
         return $this->hasMany(Level::class);
     }
 
-    // problem with route model bidding custom keys https://stackoverflow.com/a/61073459/15694873
-    public function getRouteKeyName()
+    public function products()
     {
-        return 'name';
+        return $this->hasManyThrough(Product::class, Level::class);
     }
 
     public function category()

@@ -12,16 +12,18 @@ class ProductController extends Controller
 {
     public function index(Product $product)
     {
-        $category = $product->category;
-        $serie = $product->serie;
         $level = $product->level;
+        $serie = $product->serie;
+        $category = $product->category;
 
-        //return redirect()->route("home.index"); //view("product", ["category" => $category, "serie" => $serie, "product" => $product]);
-        return redirect()->route("products.show", ["category" => $category, "serie" => $serie, "product" => $product]); //view("product", ["category" => $category, "serie" => $serie, "product" => $product]);
+        return redirect()->route("products.show", ["category" => $category, "serie" => $serie, "product" => $product]);
     }
 
     public function show(Category $category, Serie $serie, Product $product)
     {
-        dd("it's working");
+        $similar_products = $serie->products->toQuery()->inRandomOrder()->get();
+        //dd($serie->products->toQuery()->inRandomOrder()->get());
+
+        return view("product", ["category" => $category, "serie" => $serie, "product" => $product, "similar_products" => $similar_products]);
     }
 }

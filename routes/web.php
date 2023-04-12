@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InstitutionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\LocationsController;
+use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\SerieController;
 use App\Models\Product;
 use Laravel\Socialite\Facades\Socialite; // google auth
 
@@ -28,30 +30,23 @@ use Laravel\Socialite\Facades\Socialite; // google auth
 
 Route::get('/', [HomeController::class, "index"])->name("home.index");
 
-Route::get("/products/{product}", [ProductController::class, "index"])->name("products.index");
+Route::get("/products/{product:id}", [ProductController::class, "index"])->name("products.index");
 
 // problem with route model bidding custom keys https://stackoverflow.com/a/61073459/15694873
-Route::get("/catalogo/{category:name}/{serie}/{product}", [ProductController::class, "show"])->name("products.show");
-
+Route::get("/categoria/{category}/serie/{serie}/producto/{product}", [ProductController::class, "show"])->name("products.show");
 
 // google auth
 Route::get('/google-auth/redirect', [LoginController::class, "index"])->name("login.index");
-
 Route::get('/google-auth/callback', [LoginController::class, "store"]);
-
 Route::get("/google-auth/logout", [LogoutController::class, "store"])->name("logout");
 // end google auth
 
-
-
-
 Route::get("/search", [SearchController::class, "index"])->name("search.index");
 
+Route::get("/pais/{country}/escuelas/", [SchoolController::class, "index"])->name("schools.index");
+Route::get("/pais/{country}/escuelas/{school}", [SchoolController::class, "show"])->name("schools.show");
 
+Route::get("/series/{serie}", [HomeController::class, "serie"])->name("home.serie");
 
-// Route::get("/catalogo/{product:isbn}", [ProductController::class, "index"])->name("products.show");
-
-
-Route::get("/instituciones", function () {
-    return view("instituciones");
-})->name("instituciones");
+Route::get("/categoria/{category}", [SerieController::class, "index"])->name("series.index");
+Route::get("/categoria/{category}/serie/{serie}", [SerieController::class, "show"])->name("series.show");

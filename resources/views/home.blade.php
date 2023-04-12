@@ -129,11 +129,11 @@
         <div class="my-8 md:mx-32 sm:mx-10 mx-5 bg-white border-s-4 border-sky-600 p-5 shadow">
             <p class="block font-semibold mb-3">Titulos o series</p>
 
-            <ul class="flex flex-wrap gap-2 gap-y-5 justify-start sm:p-2 px-0">
+            <ul class="flex flex-wrap gap-2 gap-y-3 justify-start sm:p-2 px-0">
                 @foreach ($series as $serie)
                     <li class="">
-                        <a href=""
-                            class="rounded-md border-2 border-gray-300 bg-gray-200 p-2 sm:px-4 hover:bg-gray-300 text-xs uppercase">
+                        <a href="{{ route('home.serie', ['serie' => $serie]) }}"
+                            class="rounded-md border-2 border-gray-300 bg-gray-200 py-1 px-2 hover:bg-gray-300 text-xs uppercase">
                             {{ $serie->name }}
                         </a>
                     </li>
@@ -150,7 +150,8 @@
         @endphp
         @foreach ($group_products as $group_product)
             <div class="py-5 md:px-32 px-10 @if ($i % 2 == 0) bg-gray-200 @else bg-gray-100 @endif">
-                <a href="" class="hover:underline cursor-pointer decoration-gray-500">
+                <a href="{{ route('home.serie', ['serie' => $group_product['serie']]) }}"
+                    class="hover:underline cursor-pointer decoration-gray-500">
                     <h2 class="text-2xl font-semibold text-gray-500 cursor-pointer inline" id="section1">
                         {{ $group_product['serie']->name }}
                     </h2>

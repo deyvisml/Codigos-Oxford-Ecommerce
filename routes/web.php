@@ -50,3 +50,13 @@ Route::get("/series/{serie}", [HomeController::class, "serie"])->name("home.seri
 
 Route::get("/categoria/{category}", [SerieController::class, "index"])->name("series.index");
 Route::get("/categoria/{category}/serie/{serie}", [SerieController::class, "show"])->name("series.show");
+
+
+Route::get("/test", function () {
+    return view("test");
+});
+
+
+Route::post("/ruta_controller_test", function () {
+    dd("xd");
+});

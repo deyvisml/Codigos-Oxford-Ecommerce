@@ -7,11 +7,16 @@ use Laravel\Socialite\Facades\Socialite; // google auth
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
     public function index()
     {
+        // https://stackoverflow.com/a/44663563/15694873
+        $original_url = url()->previous();
+        session(['original_url' => $original_url]);
+
         return Socialite::driver('google')->redirect();
     }
 
@@ -28,6 +33,8 @@ class LoginController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route("home.index");
+        $original_url = session('original_url');
+
+        return redirect()->to($original_url);
     }
 }

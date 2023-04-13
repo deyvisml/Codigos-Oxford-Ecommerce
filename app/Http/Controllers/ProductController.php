@@ -22,7 +22,6 @@ class ProductController extends Controller
     public function show(Category $category, Serie $serie, Product $product)
     {
         $similar_products = $serie->products->toQuery()->inRandomOrder()->get();
-        //dd($serie->products->toQuery()->inRandomOrder()->get());
 
         return view("product", ["category" => $category, "serie" => $serie, "product" => $product, "similar_products" => $similar_products]);
     }

@@ -106,32 +106,36 @@
                 </p>
 
                 <label for="cantidad" class="block my-2 text-sm font-semibold text-gray-700">Cantidad:</label>
-                <input type="number" value="1" step="1" min="1" max="100"
+                <input type="number" value="1" step="1" min="1" max="10"
                     class="border-2 rounded outline-none p-2" id="cantidad">
 
-                <label for="cantidad" class="block my-2 text-sm font-semibold text-gray-700">Formas de pago:</label>
-                <ul id="payment_options_container" class="border w-full flex gap-x-1 justify-between">
-                    {{-- paypal --}}
-                    <li
-                        class="payment_option w-1/3 h-10 p-2 rounded-md cursor-pointer bg-neutral-50 border-2 border-yellow-400  hover:border-yellow-400  flex items-center justify-center">
-                        <img src="https://cdn.freebiesupply.com/logos/large/2x/paypal-logo-png-transparent.png"
-                            alt="" class="object-contain max-h-full">
-                    </li>
-                    {{-- visa --}}
-                    <li
-                        class="payment_option w-1/3 h-10 p-2 rounded-md cursor-pointer bg-neutral-50 border-2 border-neutral-300  hover:border-yellow-400  flex items-center justify-center">
-                        <img src="https://www.b-payment.com/docs/images/logos/Visa_logo.png" alt=""
-                            class="object-contain max-h-full">
-                    </li>
-                    {{-- mastercard --}}
-                    <li
-                        class="payment_option w-1/3 h-10 p-2 rounded-md cursor-pointer bg-neutral-50 border-2 border-neutral-300  hover:border-yellow-400  flex items-center justify-center">
-                        <img src="https://logos-download.com/wp-content/uploads/2016/03/Mastercard_Logo_2019.png"
-                            alt="" class="object-contain max-h-full">
-                    </li>
-                </ul>
+
 
                 @auth
+                    <div>
+                        <label for="cantidad" class="block my-2 text-sm font-semibold text-gray-700">Formas de pago:</label>
+                        <ul id="payment_options_container" class="border w-full flex gap-x-1 justify-between">
+                            {{-- paypal --}}
+                            <li
+                                class="payment_option w-1/3 h-10 p-2 rounded-md cursor-pointer bg-neutral-50 border-2 border-yellow-400  hover:border-yellow-400  flex items-center justify-center">
+                                <img src="https://cdn.freebiesupply.com/logos/large/2x/paypal-logo-png-transparent.png"
+                                    alt="" class="object-contain max-h-full">
+                            </li>
+                            {{-- visa --}}
+                            <li
+                                class="payment_option w-1/3 h-10 p-2 rounded-md cursor-pointer bg-neutral-50 border-2 border-neutral-300  hover:border-yellow-400  flex items-center justify-center">
+                                <img src="https://www.b-payment.com/docs/images/logos/Visa_logo.png" alt=""
+                                    class="object-contain max-h-full">
+                            </li>
+                            {{-- mastercard --}}
+                            <li
+                                class="payment_option w-1/3 h-10 p-2 rounded-md cursor-pointer bg-neutral-50 border-2 border-neutral-300  hover:border-yellow-400  flex items-center justify-center">
+                                <img src="https://logos-download.com/wp-content/uploads/2016/03/Mastercard_Logo_2019.png"
+                                    alt="" class="object-contain max-h-full">
+                            </li>
+                        </ul>
+                    </div>
+
                     <button type="button" data-te-toggle="modal" data-te-target="#payment_modal" data-te-ripple-init
                         data-te-ripple-color="light"
                         class="w-full bg-blue-600 rounded bg-primary py-2.5  mt-4 font-semibold leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]  focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
@@ -143,8 +147,7 @@
                         href="{{ route('login.index') }}">Comprar ahora</a>
                 @endguest
 
-
-                <!--Verically centered scrollable modal-->
+                <!-- PayPal payment modal-->
                 <div data-te-modal-init
                     class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
                     id="payment_modal" tabindex="-1" aria-labelledby="payment_modal" aria-modal="true" role="dialog">
@@ -180,7 +183,6 @@
                         </div>
                     </div>
                 </div>
-
 
             </div>
         </div>
@@ -274,7 +276,6 @@
     <script>
         const payment_options_container = document.querySelector("#payment_options_container");
 
-
         // Agrega un evento de clic al contenedor de opciones de pago
         payment_options_container.addEventListener("click", function(event) {
             // Encuentra el elemento li padre si se hace clic en la imagen
@@ -302,6 +303,7 @@
 
     <script>
         function init_paypal_button() {
+            let cantidad = document.querySelector("#cantidad").value;
             paypal.Buttons({
                 style: {
                     shape: 'rect',
@@ -311,28 +313,51 @@
                 },
 
                 createOrder: function(data, actions) {
+                    cantidad = document.querySelector("#cantidad").value;
+                    let price_usd = "{{ $product->price_usd }}";
+                    price_usd = Number(price_usd.substring(2, price_usd.length));
+                    const total_price = price_usd * cantidad;
+
                     return actions.order.create({
                         purchase_units: [{
-                            "description": "Monday, September 27, 2021\n4 person scramble - \n includes entry fee, cart, prizes, lunch and social.",
+                            "description": "{{ $product->name }}",
                             "amount": {
                                 "currency_code": "USD",
-                                "value": 123
+                                "value": total_price
                             }
                         }]
                     });
                 },
 
                 onApprove: function(data, actions) {
-                    /*return actions.order.capture().then(function(details) {
-                        alert(details.payer.name.given_name +
-                            'You have successfully paid for the event!' +
-                            'If you have not already filled out the form, please do so.');
-                    });*/
+                    return actions.order.capture().then(function(details) {
+                        fetch("{{ route('purchase.proccess') }}", {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': '{{ csrf_token() }}', // Si estás utilizando Laravel para proteger contra CSRF, incluye el token CSRF en la solicitud
+                                },
+                                body: JSON.stringify({
+                                    "product_id": {{ $product->id }},
+                                    "quantity": cantidad,
+                                    "details": details,
+                                }),
+                            }).then(response => response.json()) // Parsea el response a JSON
+                            .then(data => {
+                                // Accede al contenido del response en la variable 'data'
 
-                    // Enviar el formulario oculto para la redirección
-                    const hidden_redirect_form = document.getElementById('hidden_redirect_form');
-                    console.log("hidden_redirect_form");
-                    hidden_redirect_form.submit();
+                                console.log(data.status);
+
+                                if (data.status === "") {
+                                    window.location.href = "{{ route('purchase.finish_succed') }}";
+                                } else {
+                                    window.location.href = "{{ route('purchase.finish_error') }}";
+                                }
+                            })
+                            .catch(error => {
+                                // Maneja errores si es necesario
+                            });
+                    });
                 },
 
                 onError: function(err) {

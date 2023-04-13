@@ -12,6 +12,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\SerieController;
 use App\Models\Product;
@@ -52,11 +53,29 @@ Route::get("/categoria/{category}", [SerieController::class, "index"])->name("se
 Route::get("/categoria/{category}/serie/{serie}", [SerieController::class, "show"])->name("series.show");
 
 
-Route::get("/test", function () {
-    return view("test");
-});
+//Route::post("/proccess_purchase", [PurchaseController::class, "proccess_purchase"])->name("purchase.success");
+
+Route::post("/proccess_purchase", function (Request $request) {
+
+    //dd($request->details);
+    $details = $request->details;
+    $paid_amount = (float) $details["purchase_units"][0]["amount"]["value"];
+    $product_id = $request->product_id;
+    $quantity = $request->quantity;
+
+    $product = Product::find($product_id);
+    $product_price_usd = (float) substr($product->price_usd, 2, 3);
+    $right_paid_amount = $product_price_usd * $quantity;
+
+    if ($details["status"] === "COMPLETED" && $paid_amount === $right_paid_amount) {
+        // send the email with the code(s)
+        return response()->json(['status' => "succed"]);
+    } else {
+        return response()->json(['status' => "failed"]);
+    }
+})->name("purchase.proccess");
 
 
-Route::post("/ruta_controller_test", function () {
-    dd("xd");
-});
+Route::get("/compra_exitosa", [PurchaseController::class, "finish_purchase_succed"])->name("purchase.finish_succed");
+
+Route::get("/comprar_error", [PurchaseController::class, "finish_purchase_error"])->name("purchase.finish_error");

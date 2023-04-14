@@ -47,4 +47,9 @@ class Product extends Model
 
         return $serie->category();
     }
+
+    public function codes()
+    {
+        return $this->hasMany(Code::class);
+    }
 }

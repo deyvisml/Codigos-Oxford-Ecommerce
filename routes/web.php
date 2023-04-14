@@ -55,26 +55,7 @@ Route::get("/categoria/{category}/serie/{serie}", [SerieController::class, "show
 
 //Route::post("/proccess_purchase", [PurchaseController::class, "proccess_purchase"])->name("purchase.success");
 
-Route::post("/proccess_purchase", function (Request $request) {
-
-    //dd($request->details);
-    $details = $request->details;
-    $paid_amount = (float) $details["purchase_units"][0]["amount"]["value"];
-    $product_id = $request->product_id;
-    $quantity = $request->quantity;
-
-    $product = Product::find($product_id);
-    $product_price_usd = (float) substr($product->price_usd, 2, 3);
-    $right_paid_amount = $product_price_usd * $quantity;
-
-    if ($details["status"] === "COMPLETED" && $paid_amount === $right_paid_amount) {
-        // send the email with the code(s)
-        return response()->json(['status' => "succed"]);
-    } else {
-        return response()->json(['status' => "failed"]);
-    }
-})->name("purchase.proccess");
-
+Route::post("/proccess_purchase", [PurchaseController::class, "proccess_purchase"])->name("purchase.proccess");
 
 Route::get("/compra_exitosa", [PurchaseController::class, "finish_purchase_succed"])->name("purchase.finish_succed");
 

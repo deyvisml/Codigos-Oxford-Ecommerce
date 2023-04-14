@@ -105,45 +105,22 @@
                     </svg>
                 </p>
 
-                <label for="cantidad" class="block my-2 text-sm font-semibold text-gray-700">Cantidad:</label>
+                <label for="cantidad" class="block my-2 text-sm font-semibold text-gray-700">Cantidad: (max 10)</label>
                 <input type="number" value="1" step="1" min="1" max="10"
                     class="border-2 rounded outline-none p-2" id="cantidad">
 
-
-
                 @auth
-                    <div>
-                        <label for="cantidad" class="block my-2 text-sm font-semibold text-gray-700">Formas de pago:</label>
-                        <ul id="payment_options_container" class="border w-full flex gap-x-1 justify-between">
-                            {{-- paypal --}}
-                            <li
-                                class="payment_option w-1/3 h-10 p-2 rounded-md cursor-pointer bg-neutral-50 border-2 border-yellow-400  hover:border-yellow-400  flex items-center justify-center">
-                                <img src="https://cdn.freebiesupply.com/logos/large/2x/paypal-logo-png-transparent.png"
-                                    alt="" class="object-contain max-h-full">
-                            </li>
-                            {{-- visa --}}
-                            <li
-                                class="payment_option w-1/3 h-10 p-2 rounded-md cursor-pointer bg-neutral-50 border-2 border-neutral-300  hover:border-yellow-400  flex items-center justify-center">
-                                <img src="https://www.b-payment.com/docs/images/logos/Visa_logo.png" alt=""
-                                    class="object-contain max-h-full">
-                            </li>
-                            {{-- mastercard --}}
-                            <li
-                                class="payment_option w-1/3 h-10 p-2 rounded-md cursor-pointer bg-neutral-50 border-2 border-neutral-300  hover:border-yellow-400  flex items-center justify-center">
-                                <img src="https://logos-download.com/wp-content/uploads/2016/03/Mastercard_Logo_2019.png"
-                                    alt="" class="object-contain max-h-full">
-                            </li>
-                        </ul>
-                    </div>
-
                     <button type="button" data-te-toggle="modal" data-te-target="#payment_modal" data-te-ripple-init
                         data-te-ripple-color="light"
                         class="w-full bg-blue-600 rounded bg-primary py-2.5  mt-4 font-semibold leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]  focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
                         Comprar ahora
                     </button>
+                    <div class="flex justify-center items-center w-full h-9 mt-3">
+                        <img src="{{ asset('images/payment-methods.png') }}" alt="" class="object-contain max-h-full">
+                    </div>
                 @endauth
                 @guest
-                    <a class="w-full block text-center bg-blue-600 rounded bg-primary py-2.5  mt-4 font-semibold leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]  focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
+                    <a class="w-full block text-center rounded bg-primary py-2.5  mt-4 font-semibold leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]  focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
                         href="{{ route('login.index') }}">Comprar ahora</a>
                 @endguest
 
@@ -272,27 +249,29 @@
         splide1.mount();
     </script>
 
-
     <script>
-        const payment_options_container = document.querySelector("#payment_options_container");
+        // Escucha el evento 'input' en el campo de formulario
+        document.querySelector("#cantidad").addEventListener('change', function() {
+            // Obtén el valor del campo del formulario
+            const cantidad = this.value;
 
-        // Agrega un evento de clic al contenedor de opciones de pago
-        payment_options_container.addEventListener("click", function(event) {
-            // Encuentra el elemento li padre si se hace clic en la imagen
-            var clickedLi = event.target.closest("li");
+            // Verifica si el valor está fuera del rango establecido
+            if (cantidad < 1 || cantidad > 10) { // Ejemplo: rango de 0 a 100
+                // Establece un valor por defecto
+                const default_value = 1; // Ejemplo: valor por defecto de 50
 
-            // Verifica si el clic fue en un elemento li dentro del contenedor
-            if (clickedLi && clickedLi.parentElement === this) {
-                // Elimina la clase "border-yellow-400" de todos los elementos li
-                var paymentOptions = this.getElementsByClassName("payment_option");
-                for (var i = 0; i < paymentOptions.length; i++) {
-                    paymentOptions[i].classList.remove("border-yellow-400");
-                    paymentOptions[i].classList.add("border-neutral-300");
+                // Verifica si el valor es menor que 0 y establece el valor mínimo
+                if (cantidad < 1) {
+                    this.value = 1;
                 }
-
-                // Agrega la clase "border-yellow-400" al elemento li que se hizo clic
-                clickedLi.classList.add("border-yellow-400");
-                clickedLi.classList.remove("border-neutral-300");
+                // Verifica si el valor es mayor que 100 y establece el valor máximo
+                else if (cantidad > 10) {
+                    this.value = 10;
+                }
+                // Si el valor está dentro del rango pero no es un número válido, establece el valor por defecto
+                else {
+                    this.value = default_value;
+                }
             }
         });
     </script>
@@ -314,13 +293,18 @@
 
                 createOrder: function(data, actions) {
                     cantidad = document.querySelector("#cantidad").value;
+
+                    if (cantidad < 1 || cantidad > 10) {
+                        cantidad = 1;
+                    }
+
                     let price_usd = "{{ $product->price_usd }}";
                     price_usd = Number(price_usd.substring(2, price_usd.length));
                     const total_price = price_usd * cantidad;
 
                     return actions.order.create({
                         purchase_units: [{
-                            "description": "{{ $product->name }}",
+                            "description": `{{ $product->name }} x ${cantidad}`,
                             "amount": {
                                 "currency_code": "USD",
                                 "value": total_price
@@ -344,14 +328,12 @@
                                 }),
                             }).then(response => response.json()) // Parsea el response a JSON
                             .then(data => {
-                                // Accede al contenido del response en la variable 'data'
-
                                 console.log(data.status);
 
-                                if (data.status === "") {
-                                    window.location.href = "{{ route('purchase.finish_succed') }}";
+                                if (data.status === "succed") {
+                                    //window.location.href = "{{ route('purchase.finish_succed') }}";
                                 } else {
-                                    window.location.href = "{{ route('purchase.finish_error') }}";
+                                    //window.location.href = "{{ route('purchase.finish_error') }}";
                                 }
                             })
                             .catch(error => {
@@ -362,6 +344,7 @@
 
                 onError: function(err) {
                     console.log(err);
+                    alert("Ocurrio un error al procesar el pago, intentelo nuevamente.")
                 }
             }).render('#paypal-button-container');
         }

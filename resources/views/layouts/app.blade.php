@@ -5,11 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Códigos Ingles - @yield('title')</title>
+    <title>Códigos Oxford - @yield('title')</title>
+
+    <link rel="icon" href="https://elt.oup.com/system/img/favicon-152.png">
 
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements@1.0.0-beta1/dist/css/index.min.css" />
+
     <script src="https://cdn.tailwindcss.com/3.2.4"></script>
     <script>
         tailwind.config = {
@@ -46,10 +50,10 @@
         $categories = Category::limit(5)->get();
     @endphp
 
-    <nav class="flex flex-wrap justify-between md:px-32 sm:px-10 px-4 items-center py-4 bg-sky-900 sm:gap-x-4 gap-x-2">
-        <div class="flex items-center md:justify-between justify-center flex-wrap md:w-2/12 w-full bg-red-100">
-            <a href="/" class="w-auto bg-red-100">
-                <img src="{{ asset('images/logo.png') }}" alt="imagen logo" class="h-10">
+    <nav class="flex flex-wrap justify-between md:px-32 sm:px-10 px-4 items-center py-2 bg-sky-900 sm:gap-x-4 gap-x-2">
+        <div class="flex items-center md:justify-between justify-center flex-wrap md:w-2/12 w-full">
+            <a href="/" class="w-auto">
+                <img src="{{ asset('images/logo.png') }}" alt="imagen logo" class="object-contain max-h-[75px]">
             </a>
         </div>
 
@@ -100,7 +104,7 @@
                         <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
                             href="{{ route('schools.index', ['country' => $country]) }}" data-te-dropdown-item-ref>
                             {{ $country->name }}
-                            <img src="{{ asset('images/country-flags/peru.png') }}"
+                            <img src="{{ asset('images/country-flags/' . $country->flag) }}"
                                 class="w-6 h-6 inline-block ms-2 mb-1" alt="">
                         </a>
                     </li>
@@ -111,7 +115,35 @@
 
         <div class="w-auto min-w-[150px] my-2 flex justify-end">
             @auth
-                <a href="/google-auth/logout" class="text-gray-100 text-left">Cerrar sesión</a>
+                <div class="relative" data-te-dropdown-ref>
+                    <!-- Second dropdown trigger -->
+                    <a class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none justify-center cursor-pointer"
+                        href="#" id="dropdownMenuButton2" role="button" data-te-dropdown-toggle-ref
+                        aria-expanded="false">
+                        <!-- User avatar -->
+                        <img src="{{ auth()->user()->picture }}"
+                            class="w-9 h-9 rounded-full border-neutral-300 border-2 me-2" alt="" loading="lazy" />
+                        <p class="text-neutral-100 me-1 text-sm cursor-pointer">{{ auth()->user()->first_name }}</p>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-4 h-4 text-neutral-100 mt-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </a>
+                    <!-- Second dropdown menu -->
+                    <ul class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                        aria-labelledby="dropdownMenuButton2" data-te-dropdown-menu-ref>
+                        <!-- Second dropdown menu items -->
+                        <li>
+                            <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+                                href="{{ route('purchase.list') }}" data-te-dropdown-item-ref>Mis compras</a>
+                        </li>
+                        <li>
+                            <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+                                href="/google-auth/logout" data-te-dropdown-item-ref>Salir</a>
+                        </li>
+                    </ul>
+                </div>
             @endauth
             @guest
                 <a href="/google-auth/redirect" class="text-gray-100 text-left">Ingresar / Registrarse</a>
@@ -136,13 +168,13 @@
         @yield('content')
     </main>
 
-    <footer class="mt-10 h-24 bg-sky-200 flex justify-center items-center">
-        <p class="text-center">Todos los derechos reservados 2023 ©</p>
+    <footer class="h-24 bg-sky-200 flex justify-center items-center">
+        <p class="text-center">Códigos Oxford 2022 ©</p>
     </footer>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements@1.0.0-beta1/dist/js/index.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     @stack('js-scripts')
 </body>
 

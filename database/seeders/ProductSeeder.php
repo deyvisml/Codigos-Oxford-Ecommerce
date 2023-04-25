@@ -23,10 +23,9 @@ class ProductSeeder extends Seeder
                 'edition'     => (string) $faker->randomDigitNotNull(),
                 'format'     => $faker->word(),
                 'licence_length'   => $faker->numberBetween(18, 22) . " meses",
-                'price_usd'   => "$ " . $faker->numberBetween(10, 30),
-                'price_pen'   => "S/ " . $faker->numberBetween(45, 65),
+                'price_usd'   => $faker->numberBetween(10, 30),
                 'image'   => "https://picsum.photos/80/100",
-                'level_id'   => $faker->numberBetween(2, 51),
+                'level_id'   => $faker->numberBetween(1, 50),
             ]);
         }
     }

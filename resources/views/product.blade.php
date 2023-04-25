@@ -35,7 +35,7 @@
 @endpush
 
 @section('content')
-    <div class="my-8 md:mx-32 sm:mx-10 mx-5">
+    <div class="my-8 mb-20 md:mx-32 sm:mx-10 mx-5">
         <div class="flex gap-x-2 items-center flex-wrap sm:text-base text-sm">
             <a href="{{ route('home.index') }}" class="text-sky-800 hover:underline">Inicio</a>
 
@@ -62,7 +62,7 @@
 
         <div class="flex my-5 flex-wrap justify-around py-5 items-start">
             <div class="md:w-52 border rounded flex justify-center items-center h-52 p-5">
-                <img src="{{ $product->image }}" alt="" class="h-full object-contain">
+                <img src="{{ $product->image }}" alt="" class="h-full object-contain max-w-[150px]">
             </div>
 
             <div class="md:w-6/12 w-full md:m-5 mx-2 md:my-0 my-5 md:order-2 order-3">
@@ -80,7 +80,7 @@
                     </li>
                     <li class="flex border-b border-gray-300">
                         <p class="w-1/3 font-bold text-sm bg-gray-100 p-3">Nivel</p>
-                        <p class="w-2/3 text-sm p-3 bg-gray-50">{{ $product->level_id }}</p>
+                        <p class="w-2/3 text-sm p-3 bg-gray-50">{{ $level->name }}</p>
                     </li>
                     <li class="flex border-b border-gray-300">
                         <p class="w-1/3 font-bold text-sm bg-gray-200 p-3">Duración</p>
@@ -96,7 +96,7 @@
 
             <div
                 class="md:w-80 sm:w-auto md:my-0 my-5 w-full rounded bg-white shadow border-2 border-gray-100 p-4 md:order-3 order-2">
-                <p class="text-4xl font-semibold">{{ $product->price_usd }}</p>
+                <p class="text-4xl font-semibold">{{ $product->price_usd }} USD</p>
                 <p class="my-3 text-sky-700 text-sm font-semibold">Stock disponible
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-5 h-5 mb-1 inline-block">
@@ -120,8 +120,8 @@
                     </div>
                 @endauth
                 @guest
-                    <a class="w-full block text-center rounded bg-primary py-2.5  mt-4 font-semibold leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]  focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
-                        href="{{ route('login.index') }}">Comprar ahora</a>
+                    <a class="w-full bg-blue-600 block text-center rounded bg-primary py-2.5  mt-4 font-semibold leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]  focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
+                        href="{{ route('login') }}">Comprar ahora</a>
                 @endguest
 
                 <!-- PayPal payment modal-->
@@ -194,8 +194,8 @@
                                         class="block p-3 cursor-pointer">
                                         <div class="flex flex-col justify-center items-center text-center ">
                                             <div class="w-full h-44 flex justify-center items-center">
-                                                <img src="https://picsum.photos/80/100" alt="imagen item"
-                                                    class="object-contain h-full">
+                                                <img src="{{ $similar_product->image }}" alt="imagen item"
+                                                    class="object-contain h-full max-w-[140px]">
                                             </div>
 
                                             <div class="w-full text-start">
@@ -208,7 +208,7 @@
                                                     ISBN: <span class="font-normal">{{ $similar_product->isbn }}</span>
                                                 </p>
                                                 <p class="text-2xl font-semibold text-gray-800 cursor-pointer">
-                                                    {{ $similar_product->price_usd }}
+                                                    {{ $similar_product->price_usd }} USD
                                                 </p>
                                             </div>
                                         </div>
@@ -298,8 +298,8 @@
                         cantidad = 1;
                     }
 
-                    let price_usd = "{{ $product->price_usd }}";
-                    price_usd = Number(price_usd.substring(2, price_usd.length));
+                    let price_usd = {{ $product->price_usd }};
+                    //price_usd = Number(price_usd.substring(2, price_usd.length));
                     const total_price = price_usd * cantidad;
 
                     return actions.order.create({
@@ -331,9 +331,9 @@
                                 console.log(data.status);
 
                                 if (data.status === "succed") {
-                                    //window.location.href = "{{ route('purchase.finish_succed') }}";
+                                    window.location.href = "{{ route('purchase.finish_succed') }}";
                                 } else {
-                                    //window.location.href = "{{ route('purchase.finish_error') }}";
+                                    window.location.href = "{{ route('purchase.finish_error') }}";
                                 }
                             })
                             .catch(error => {

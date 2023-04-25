@@ -15,7 +15,7 @@ class SearchController extends Controller
 
         // buscar los items para el keyword: https://stackoverflow.com/questions/28543166/laravel-filter-a-value-in-all-columns
         $query = Product::query();
-        $columns = ['name', 'isbn'];
+        $columns = ['name', 'isbn', 'isbn2'];
         foreach ($columns as $column) {
             $query->orWhere($column, 'LIKE', '%' . $request->keyword . '%');
         }

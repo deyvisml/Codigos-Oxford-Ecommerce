@@ -57,12 +57,12 @@
             <!--First item-->
             <div class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none h-full"
                 data-te-carousel-active data-te-carousel-item style="backface-visibility: hidden">
-                <img src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(23).jpg" class="w-full h-full object-cover"
+                <img src="{{ asset('images/carousel_images/image1.jpg') }}" class="w-full h-full object-cover"
                     alt="..." />
                 <div class="absolute inset-x-[15%] bottom-10 py-5 text-center text-white block">
-                    <h1 class="text-2xl font-bold">Códigos Ingles</h1>
-                    <p>
-                        Adquiere tus códigos, licencias, libros digitales para las plataformas Oxford
+                    <h1 class="text-2xl font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Códigos Oxford</h1>
+                    <p class="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                        Adquiere tus códigos y licencias digitales de Oxford University Press (OUP).
                     </p>
                 </div>
             </div>
@@ -70,12 +70,12 @@
             <!--Second item-->
             <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none h-full"
                 data-te-carousel-item style="backface-visibility: hidden">
-                <img src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(22).jpg" class="w-full h-full object-cover"
+                <img src="{{ asset('images/carousel_images/image2.jpg') }}" class="w-full h-full object-cover"
                     alt="..." />
                 <div class="absolute inset-x-[15%] bottom-10 py-5 text-center text-white block">
-                    <h1 class="text-2xl font-bold">Códigos Ingles</h1>
-                    <p>
-                        Adquiere tus códigos, licencias, libros digitales para las plataformas Oxford
+                    <h2 class="text-2xl font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Online Practice</h2>
+                    <p class="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                        Adquiere códigos y licencias digitales para el Online Practice.
                     </p>
                 </div>
             </div>
@@ -83,12 +83,13 @@
             <!--Third item-->
             <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none h-full"
                 data-te-carousel-item style="backface-visibility: hidden">
-                <img src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(24).jpg" class="w-full h-full object-cover"
+                <img src="{{ asset('images/carousel_images/image3.jpg') }}" class="w-full h-full object-cover"
                     alt="..." />
                 <div class="absolute inset-x-[15%] bottom-10 py-5 text-center text-white block">
-                    <h1 class="text-2xl font-bold">Códigos Ingles</h1>
-                    <p>
-                        Adquiere tus códigos, licencias, libros digitales para las plataformas Oxford
+                    <h2 class="text-2xl font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Oxford Learner’s Bookshelf
+                    </h2>
+                    <p class="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                        Adquiere códigos y licencias digitales para el Student Book y el Workbook en formato e-book
                     </p>
                 </div>
             </div>
@@ -110,19 +111,17 @@
                         alt="">
                 </li>
                 <li><img class="md:h-10 h-8 rounded"
-                        src="https://scontent.faqp2-1.fna.fbcdn.net/v/t1.6435-9/64334091_271020363714449_402647682146893824_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=e3f864&_nc_ohc=-YfXkZchU6EAX_vdLAb&_nc_ht=scontent.faqp2-1.fna&oh=00_AfAR-EFdM1FiS-Yf6FId_-GJ_zLVb2MLu1WJ64jh_yJqug&oe=6457A62A"
-                        alt="">
+                        src="https://logos-world.net/wp-content/uploads/2020/09/Mastercard-Logo.png" alt="">
                 </li>
                 <li><img class="md:h-10 h-8 rounded"
-                        src="https://d2a95c7k4laywg.cloudfront.net/wp-content/uploads/2021/03/bcp-logo-300x117.png"
-                        alt=""></li>
-                <li><img class="md:h-10 h-8 rounded"
-                        src="https://yt3.googleusercontent.com/l048nvZUXxmhjaDjxdJntZWSj03oOAK0ETKCQZup-Ea-aM_h8M94Jz87cw8JiwCHSEbv8llH=s176-c-k-c0x00ffffff-no-rj"
-                        alt=""></li>
-
-                <li><img class="md:h-10 h-8 rounded"
-                        src="https://seeklogo.com/images/P/plin-logo-967A4AF583-seeklogo.com.png" alt="">
+                        src="https://logos-world.net/wp-content/uploads/2020/11/American-Express-Logo.png" alt="">
                 </li>
+                <!--<li><img class="md:h-10 h-8 rounded"
+                                src="https://d2a95c7k4laywg.cloudfront.net/wp-content/uploads/2021/03/bcp-logo-300x117.png"
+                                alt=""></li>
+                        <li><img class="md:h-10 h-8 rounded"
+                                    src="https://yt3.googleusercontent.com/l048nvZUXxmhjaDjxdJntZWSj03oOAK0ETKCQZup-Ea-aM_h8M94Jz87cw8JiwCHSEbv8llH=s176-c-k-c0x00ffffff-no-rj"
+                                    alt=""></li>-->
             </ul>
         </div>
 
@@ -144,7 +143,7 @@
 
 
 
-    <div class="bg-gray-100">
+    <div class="bg-gray-100 mb-20">
         @php
             $i = 1;
         @endphp
@@ -183,8 +182,8 @@
                                             class="block p-3 cursor-pointer">
                                             <div class="flex flex-col justify-center items-center text-center ">
                                                 <div class="w-full h-44 flex justify-center items-center">
-                                                    <img src="https://picsum.photos/80/100" alt="imagen item"
-                                                        class="object-contain h-full">
+                                                    <img src="{{ $product->image }}" alt="imagen item"
+                                                        class="object-contain h-full max-w-[140px]">
                                                 </div>
 
                                                 <div class="w-full text-start">
@@ -197,7 +196,7 @@
                                                         ISBN: <span class="font-normal">{{ $product->isbn }}</span>
                                                     </p>
                                                     <p class="text-2xl font-semibold text-gray-800 cursor-pointer">
-                                                        {{ $product->price_usd }}
+                                                        {{ $product->price_usd }} USD
                                                     </p>
                                                 </div>
                                             </div>

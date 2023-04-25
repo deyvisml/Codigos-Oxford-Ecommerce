@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="my-8 md:mx-32 sm:mx-10 mx-5">
+    <div class="my-8 mb-20 md:mx-32 sm:mx-10 mx-5">
         <div class="mb-5 border-b-2">
             <p class="text-2xl">Busqueda: <span class="font-semibold">{{ $keyword }}</span></p>
             <p class="py-2">{{ $products->total() }} resultados</p>
@@ -23,7 +23,7 @@
                                     <div class="flex flex-col justify-center items-center text-center ">
                                         <div class="w-full h-44 flex justify-center items-center">
                                             <img src="{{ $product->image }}" alt="product image"
-                                                class="object-contain h-full">
+                                                class="object-contain h-full max-w-[140px]">
                                         </div>
 
                                         <div class="w-full text-start">
@@ -36,7 +36,7 @@
                                                 ISBN: <span class="font-normal">{{ $product->isbn }}</span>
                                             </p>
                                             <p class="text-2xl font-semibold text-gray-800 cursor-pointer">
-                                                {{ $product->price_usd }}
+                                                {{ $product->price_usd }} USD
                                             </p>
                                         </div>
                                     </div>

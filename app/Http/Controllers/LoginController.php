@@ -24,11 +24,16 @@ class LoginController extends Controller
     {
         $google_user = Socialite::driver('google')->user();
 
+        $user_data = $google_user->user;
+
         $user = User::updateOrCreate([
             'google_id' => $google_user->id,
         ], [
-            'name' => $google_user->name,
-            'email' => $google_user->email
+            'first_name' => $user_data["given_name"],
+            'family_name' => $user_data["family_name"],
+            'picture' => $user_data["picture"],
+            'locale' => $user_data["locale"],
+            'email' => $user_data["email"]
         ]);
 
         Auth::login($user);

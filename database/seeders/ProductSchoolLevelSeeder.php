@@ -18,7 +18,7 @@ class ProductSchoolLevelSeeder extends Seeder
 
         for ($i = 1; $i <= 100; $i++) {
             ProductSchoolLevel::create([
-                'product_id' => $faker->numberBetween(3, 242),
+                'product_id' => $faker->numberBetween(1, 200),
                 'school_level_id' => $faker->numberBetween(1, 25),
             ]);
         }

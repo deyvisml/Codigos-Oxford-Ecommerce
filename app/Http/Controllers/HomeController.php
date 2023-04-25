@@ -12,10 +12,10 @@ class HomeController extends Controller
     public function index()
     {
         // get series
-        $series = Serie::inRandomOrder()->limit(8)->get();
+        $series = Serie::inRandomOrder()->limit(20)->get();
 
         // get products from 5 diferent series
-        $id_series_selected = [62, 63, 64, 65, 66];
+        $id_series_selected = [99, 109, 101, 114, 128];
 
         $group_products = array();
 
@@ -24,8 +24,7 @@ class HomeController extends Controller
 
             $group_products[$i]["serie"] = Serie::find($id_series_selected[$i]);
 
-            $group_products[$i]["products"] =
-                $test = Product::join("levels", "products.level_id", "=", "levels.id")
+            $group_products[$i]["products"] = Product::join("levels", "products.level_id", "=", "levels.id")
                 ->join("series", "levels.serie_id", "=", "series.id")
                 ->where("series.id", $id_series_selected[$i])
                 ->select("products.*")

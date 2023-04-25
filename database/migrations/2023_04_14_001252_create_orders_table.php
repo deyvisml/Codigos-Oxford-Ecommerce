@@ -17,7 +17,9 @@ return new class extends Migration
             $table->float("unit_price")->nullable(false);
             $table->float("total_price")->nullable(false);
             $table->float("user_paid")->nullable(false);
+            $table->boolean("payment_issue")->nullable(false);
             $table->boolean("email_sent")->nullable(false);
+            $table->foreignId("product_id")->constrained()->onDelete("cascade");
             $table->foreignId("user_id")->constrained()->onDelete("cascade");
             $table->timestamps();
         });

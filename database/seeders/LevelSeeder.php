@@ -19,7 +19,7 @@ class LevelSeeder extends Seeder
         for ($i = 1; $i <= 50; $i++) {
             Level::create([
                 'name' => $faker->words(2, true),
-                'serie_id' => $faker->numberBetween(46, 85),
+                'serie_id' => $faker->numberBetween(1, 40),
             ]);
         }
     }

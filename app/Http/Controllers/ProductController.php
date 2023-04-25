@@ -23,6 +23,8 @@ class ProductController extends Controller
     {
         $similar_products = $serie->products->toQuery()->inRandomOrder()->get();
 
-        return view("product", ["category" => $category, "serie" => $serie, "product" => $product, "similar_products" => $similar_products]);
+        $level = $product->level;
+
+        return view("product", ["category" => $category, "serie" => $serie, "level" => $level, "product" => $product, "similar_products" => $similar_products]);
     }
 }

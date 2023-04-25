@@ -37,7 +37,7 @@ Route::get("/products/{product:id}", [ProductController::class, "index"])->name(
 Route::get("/categoria/{category}/serie/{serie}/producto/{product}", [ProductController::class, "show"])->name("products.show");
 
 // google auth
-Route::get('/google-auth/redirect', [LoginController::class, "index"])->name("login.index");
+Route::get('/google-auth/redirect', [LoginController::class, "index"])->name("login");
 Route::get('/google-auth/callback', [LoginController::class, "store"]);
 Route::get("/google-auth/logout", [LogoutController::class, "store"])->name("logout");
 // end google auth
@@ -53,10 +53,10 @@ Route::get("/categoria/{category}", [SerieController::class, "index"])->name("se
 Route::get("/categoria/{category}/serie/{serie}", [SerieController::class, "show"])->name("series.show");
 
 
-//Route::post("/proccess_purchase", [PurchaseController::class, "proccess_purchase"])->name("purchase.success");
-
 Route::post("/proccess_purchase", [PurchaseController::class, "proccess_purchase"])->name("purchase.proccess");
 
 Route::get("/compra_exitosa", [PurchaseController::class, "finish_purchase_succed"])->name("purchase.finish_succed");
 
-Route::get("/comprar_error", [PurchaseController::class, "finish_purchase_error"])->name("purchase.finish_error");
+Route::get("/compra_error", [PurchaseController::class, "finish_purchase_error"])->name("purchase.finish_error");
+
+Route::get("/mis_compras", [PurchaseController::class, "purchases_list"])->name("purchase.list");

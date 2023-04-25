@@ -19,7 +19,7 @@ class SerieSeeder extends Seeder
         for ($i = 1; $i <= 40; $i++) {
             Serie::create([
                 'name' => $faker->sentence(),
-                'category_id' => $faker->numberBetween(12, 31),
+                'category_id' => $faker->numberBetween(1, 20),
             ]);
         }
     }

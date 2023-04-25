@@ -11,8 +11,13 @@ class SchoolController extends Controller
 {
     public function index(Country $country)
     {
-        // get an school of the country and redirect  
-        $school = $country->schools->toQuery()->orderBy('name', 'ASC')->first();
+        // get an school of the country and redirect
+        $school = array();
+        if ($country->schools->count() > 0) {
+            $school = $country->schools->toQuery()->orderBy('name', 'ASC')->first();
+        } else {
+            return redirect()->route("home.index");
+        }
 
         //dd($school);
 
@@ -22,7 +27,11 @@ class SchoolController extends Controller
     public function show(Country $country, School $school)
     {
         // get schools
-        $schools = $country->schools->toQuery()->orderBy('name', 'ASC')->get();
+        $schools = array();
+
+        if ($country->schools->count() > 0) {
+            $schools = $country->schools->toQuery()->orderBy('name', 'ASC')->get();
+        }
 
         // get school levels
         $school_levels = $school->school_levels;

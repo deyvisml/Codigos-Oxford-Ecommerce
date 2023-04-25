@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('series', function (Blueprint $table) {
             $table->id();
             $table->string("name")->nullable(false);
+            $table->text("description")->nullable();
             $table->foreignId("category_id")->constrained()->onDelete("cascade");
             $table->timestamps();
         });

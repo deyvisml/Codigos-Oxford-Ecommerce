@@ -14,7 +14,9 @@ class Order extends Model
         "unit_price",
         "total_price",
         "user_paid",
+        "payment_issue",
         "email_sent",
+        "product_id",
         "user_id",
     ];
 

@@ -11,14 +11,17 @@ class Product extends Model
 
     protected $fillable = [
         "name",
+        "description",
+        "product_component_list",
+        "image",
         "isbn",
+        "isbn2",
         "edition",
         "format",
         "licence_length",
         "price_usd",
-        "price_pen",
+        "price_usd",
         "level_id",
-        "iamge"
     ];
 
     // problem with route model bidding custom keys https://stackoverflow.com/a/61073459/15694873

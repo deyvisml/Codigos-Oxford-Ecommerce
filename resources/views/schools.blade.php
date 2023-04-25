@@ -9,13 +9,14 @@
 @endpush
 
 @section('content')
-    <div class="md:mx-32 sm:mx-10 my-8  mx-5">
+    <div class="md:mx-32 sm:mx-10 my-8 mb-20 mx-5">
 
         <div class="border-b-2 pb-5">
             <h3 class="text-2xl font-semibold mb-5">Seleccione su escuela</h3>
 
             <div class="mb-3 md:w-1/2 w-full">
-                <select data-te-select-init id="select_schools" name="miselect" size="5">
+
+                <select data-te-select-init id="select_schools" name="miselect" size="10">
                     @foreach ($schools as $school)
                         <option class="{{ $current_school->id }}"
                             value="{{ route('schools.show', ['country' => $country, 'school' => $school]) }}"
@@ -53,7 +54,7 @@
                 </ul>
             </div>
 
-            <div class="md:w-3/4 w-full bg-gray-200 py-4 px-2 md:min-h-[390px]">
+            <div class="md:w-3/4 w-full bg-gray-200 py-4 px-2 md:min-h-[390px] self-baseline">
                 @php
                     $first_time = true;
                 @endphp
@@ -72,8 +73,8 @@
                                                 class="block p-3 cursor-pointer">
                                                 <div class="flex flex-col justify-center items-center text-center ">
                                                     <div class="w-full h-44 flex justify-center items-center">
-                                                        <img src="https://picsum.photos/80/100" alt="imagen item"
-                                                            class="object-contain h-full">
+                                                        <img src="{{ $product->image }}" alt="imagen item"
+                                                            class="object-contain h-full max-w-[140px]">
                                                     </div>
 
                                                     <div class="w-full text-start">
@@ -86,7 +87,7 @@
                                                             ISBN: <span class="font-normal">{{ $product->isbn }}</span>
                                                         </p>
                                                         <p class="text-2xl font-semibold text-gray-800 cursor-pointer">
-                                                            {{ $product->price_usd }}
+                                                            {{ $product->price_usd }} USD
                                                         </p>
                                                     </div>
                                                 </div>
@@ -111,8 +112,8 @@
                                                 class="block p-3 cursor-pointer">
                                                 <div class="flex flex-col justify-center items-center text-center ">
                                                     <div class="w-full h-44 flex justify-center items-center">
-                                                        <img src="https://picsum.photos/80/100" alt="imagen item"
-                                                            class="object-contain h-full">
+                                                        <img src="{{ $product->image }}" alt="imagen item"
+                                                            class="object-contain h-full max-w-[140px]">
                                                     </div>
 
                                                     <div class="w-full text-start">
@@ -125,7 +126,7 @@
                                                             ISBN: <span class="font-normal">{{ $product->isbn }}</span>
                                                         </p>
                                                         <p class="text-2xl font-semibold text-gray-800 cursor-pointer">
-                                                            {{ $product->price_usd }}
+                                                            {{ $product->price_usd }} USD
                                                         </p>
                                                     </div>
                                                 </div>

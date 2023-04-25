@@ -14,12 +14,16 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string("name")->nullable(false);
+            $table->text("description")->nullable();
+            $table->text("product_component_list")->nullable();
+            $table->string("image")->nullable(false);
             $table->string("isbn");
+            $table->string("isbn2");
             $table->string("edition");
             $table->string("format");
             $table->string("licence_length");
-            $table->string("price_usd")->nullable(false);
-            $table->string("price_pen")->nullable(false);
+            $table->float("price_usd")->nullable();
+            $table->float("price_usd")->nullable(false);
             $table->foreignId("level_id")->constrained()->onDelete("cascade");
             $table->timestamps();
         });

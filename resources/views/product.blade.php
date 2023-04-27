@@ -1,14 +1,21 @@
 @extends('layouts.app')
 
 @section('title')
-    Item
+    Producto
 @endsection
 
 @push('css-scripts')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     <style>
         .splide__pagination {
+            visibility: hidden !important;
             bottom: -20px !important;
+        }
+
+        @media (min-width: 640px) {
+            .splide__pagination {
+                visibility: visible !important;
+            }
         }
 
         .splide__pagination__page {

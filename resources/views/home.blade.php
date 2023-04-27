@@ -8,7 +8,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     <style>
         .splide__pagination {
+            visibility: hidden !important;
             bottom: -20px !important;
+        }
+
+        @media (min-width: 640px) {
+            .splide__pagination {
+                visibility: visible !important;
+            }
         }
 
         .splide__pagination__page {
@@ -37,7 +44,7 @@
 @section('content')
     <!-- Carousel imagenes -->
 
-    <div id="carouselExampleCaptions" class="relative md:h-80 h-72" data-te-carousel-init data-te-carousel-slide>
+    <div id="carouselExampleCaptions" class="relative md:h-80 sm:h-72 h-44" data-te-carousel-init data-te-carousel-slide>
         <!--Carousel indicators-->
         <div class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
             data-te-carousel-indicators>
@@ -60,8 +67,10 @@
                 <img src="{{ asset('images/carousel_images/image1.jpg') }}" class="w-full h-full object-cover"
                     alt="..." />
                 <div class="absolute inset-x-[15%] bottom-10 py-5 text-center text-white block">
-                    <h1 class="text-2xl font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Códigos Oxford</h1>
-                    <p class="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                    <h1 class="sm:text-2xl text-base sm:block hidden font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                        Códigos Oxford
+                    </h1>
+                    <p class="sm:text-base text-sm drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                         Adquiere tus códigos y licencias digitales de Oxford University Press (OUP).
                     </p>
                 </div>
@@ -73,8 +82,9 @@
                 <img src="{{ asset('images/carousel_images/image2.jpg') }}" class="w-full h-full object-cover"
                     alt="..." />
                 <div class="absolute inset-x-[15%] bottom-10 py-5 text-center text-white block">
-                    <h2 class="text-2xl font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Online Practice</h2>
-                    <p class="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                    <h2 class="sm:text-2xl text-base font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Online Practice
+                    </h2>
+                    <p class="sm:text-base text-sm drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                         Adquiere códigos y licencias digitales para el Online Practice.
                     </p>
                 </div>
@@ -86,9 +96,10 @@
                 <img src="{{ asset('images/carousel_images/image3.jpg') }}" class="w-full h-full object-cover"
                     alt="..." />
                 <div class="absolute inset-x-[15%] bottom-10 py-5 text-center text-white block">
-                    <h2 class="text-2xl font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Oxford Learner’s Bookshelf
+                    <h2 class="sm:text-2xl text-base font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Oxford Learner’s
+                        Bookshelf
                     </h2>
-                    <p class="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                    <p class="sm:text-base text-sm drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                         Adquiere códigos y licencias digitales para el Student Book y el Workbook en formato e-book
                     </p>
                 </div>
@@ -117,11 +128,11 @@
                         src="https://logos-world.net/wp-content/uploads/2020/11/American-Express-Logo.png" alt="">
                 </li>
                 <!--<li><img class="md:h-10 h-8 rounded"
-                                src="https://d2a95c7k4laywg.cloudfront.net/wp-content/uploads/2021/03/bcp-logo-300x117.png"
-                                alt=""></li>
-                        <li><img class="md:h-10 h-8 rounded"
-                                    src="https://yt3.googleusercontent.com/l048nvZUXxmhjaDjxdJntZWSj03oOAK0ETKCQZup-Ea-aM_h8M94Jz87cw8JiwCHSEbv8llH=s176-c-k-c0x00ffffff-no-rj"
-                                    alt=""></li>-->
+                                                                                                                src="https://d2a95c7k4laywg.cloudfront.net/wp-content/uploads/2021/03/bcp-logo-300x117.png"
+                                                                                                                alt=""></li>
+                                                                                                        <li><img class="md:h-10 h-8 rounded"
+                                                                                                                    src="https://yt3.googleusercontent.com/l048nvZUXxmhjaDjxdJntZWSj03oOAK0ETKCQZup-Ea-aM_h8M94Jz87cw8JiwCHSEbv8llH=s176-c-k-c0x00ffffff-no-rj"
+                                                                                                                    alt=""></li>-->
             </ul>
         </div>
 

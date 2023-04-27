@@ -12,7 +12,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements@1.0.0-beta1/dist/css/index.min.css" />
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements@1.0.0-beta1/dist/css/index.min.css" /> -->
 
     <script src="https://cdn.tailwindcss.com/3.2.4"></script>
     <script>
@@ -33,7 +33,7 @@
 
     @stack('css-scripts')
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/tw-elements.min.css', 'resources/js/tw-elements.umd.min.js'])
 </head>
 
 <body class="">
@@ -60,8 +60,7 @@
         <form action="{{ route('search.index') }}" method="get"
             class="search-container md:w-5/12 w-full sm:min-w-[400px] md:my-0 mt-3 flex items-center justify-center">
 
-            <div
-                class="md:w-full w-full rounded flex items-center border-y border-s overflow-hidden border-cyan-700  shadow-[0_4px_9px_-4px_#fbfbfb] ">
+            <div class="md:w-full w-full rounded flex items-center border-y border-s overflow-hidden ">
                 <input type="text" name="keyword" placeholder="Buscar por titulo, ISBN, etc."
                     class="w-11/12 p-2 outline-none" autofocus required>
 
@@ -173,7 +172,7 @@
     </footer>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/tw-elements@1.0.0-beta1/dist/js/index.min.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/tw-elements@1.0.0-beta1/dist/js/index.min.js"></script>-->
 
     @stack('js-scripts')
 </body>

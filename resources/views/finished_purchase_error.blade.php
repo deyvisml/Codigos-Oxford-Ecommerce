@@ -9,7 +9,7 @@
         <p class="text-2xl font-semibold">Error</p>
         <p class=" text-center sm:p-5 py-5 max-w-[700px]">
             Lo sentimos, algo salió mal. Para cualquier consulta, póngase en contacto con nuestro soporte en <span
-                class="text-sky-900 font-semibold">codigosoxford@gmail.com</span>. Gracias.
+                class="text-sky-900 font-semibold">oxfordcodes@gmail.com</span>. Gracias.
         </p>
 
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"

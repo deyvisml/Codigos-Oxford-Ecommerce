@@ -122,14 +122,15 @@
                         class="w-full bg-blue-600 rounded bg-primary py-2.5  mt-4 font-semibold leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]  focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
                         Comprar ahora
                     </button>
-                    <div class="flex justify-center items-center w-full h-9 mt-3">
-                        <img src="{{ asset('images/payment-methods.png') }}" alt="" class="object-contain max-h-full">
-                    </div>
                 @endauth
                 @guest
                     <a class="w-full bg-blue-600 block text-center rounded bg-primary py-2.5  mt-4 font-semibold leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]  focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
                         href="{{ route('login') }}">Comprar ahora</a>
                 @endguest
+
+                <div class="flex justify-center items-center w-full h-9 mt-3">
+                    <img src="{{ asset('images/payment-methods.png') }}" alt="" class="object-contain max-h-full">
+                </div>
 
                 <!-- PayPal payment modal-->
                 <div data-te-modal-init

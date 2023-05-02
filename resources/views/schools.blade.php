@@ -5,9 +5,6 @@
 @endsection
 
 
-@push('css-scripts')
-@endpush
-
 @section('content')
     <div class="md:mx-32 sm:mx-10 my-8 mb-20 mx-5">
 
@@ -26,6 +23,7 @@
                     @endforeach
                 </select>
                 <label data-te-select-label-ref>Institución</label>
+
             </div>
         </div>
 

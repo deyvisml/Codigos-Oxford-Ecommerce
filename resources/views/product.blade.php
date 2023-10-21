@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Producto
+    {{ $product->name }}
 @endsection
 
 @push('css-scripts')

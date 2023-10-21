@@ -28,6 +28,7 @@ class HomeController extends Controller
                 ->join("series", "levels.serie_id", "=", "series.id")
                 ->where("series.id", $id_series_selected[$i])
                 ->select("products.*")
+                ->orderBy("price_usd", "ASC")
                 ->get();
         }
 

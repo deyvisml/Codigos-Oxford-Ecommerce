@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RoleUser;
 use App\Models\User;
 use Laravel\Socialite\Facades\Socialite; // google auth
 
@@ -35,6 +36,14 @@ class LoginController extends Controller
             'locale' => $user_data["locale"],
             'email' => $user_data["email"]
         ]);
+
+        if ($user->wasRecentlyCreated) {
+            $id_client_rol = 1;
+            $role_user = RoleUser::create([
+                "user_id" => $user->id,
+                "role_id" => $id_client_rol,
+            ]);
+        }
 
         Auth::login($user);
 

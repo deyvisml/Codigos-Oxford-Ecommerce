@@ -11,7 +11,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\SerieController;
 
@@ -52,10 +52,10 @@ Route::get("/categoria/{category}", [SerieController::class, "index"])->name("se
 Route::get("/categoria/{category}/serie/{serie}", [SerieController::class, "show"])->name("series.show");
 
 
-Route::post("/proccess_purchase", [PurchaseController::class, "proccess_purchase"])->name("purchase.proccess");
+Route::post("/proccess_order", [OrderController::class, "proccess_order"])->name("purchase.proccess");
 
-Route::get("/compra_exitosa", [PurchaseController::class, "finish_purchase_succed"])->name("purchase.finish_succed");
+Route::get("/compra_exitosa", [OrderController::class, "finish_order_succed"])->name("purchase.finish_succed");
 
-Route::get("/compra_error", [PurchaseController::class, "finish_purchase_error"])->name("purchase.finish_error");
+Route::get("/compra_error", [OrderController::class, "finish_order_error"])->name("purchase.finish_error");
 
-Route::get("/mis_compras", [PurchaseController::class, "purchases_list"])->name("purchase.list");
+Route::get("/mis_compras", [OrderController::class, "own_orders"])->name("purchase.list");

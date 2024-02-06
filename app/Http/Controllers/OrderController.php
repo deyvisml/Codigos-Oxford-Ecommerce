@@ -8,15 +8,17 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class PurchaseController extends Controller
+class OrderController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    public function purchases_list()
+    public function own_orders()
     {
+        $this->authorize('viewOwn', Order::class);
+
         $orders_data = array();
 
         if (auth()->user()->orders->count() > 0) {
@@ -41,10 +43,10 @@ class PurchaseController extends Controller
 
         //dd($orders);
 
-        return view("purchases_list", ["orders" => $orders]);
+        return view("own_orders", ["orders" => $orders]);
     }
 
-    public function proccess_purchase(Request $request)
+    public function proccess_order(Request $request)
     {
         //dd($request->details);
         $details = $request->details;
@@ -114,12 +116,12 @@ class PurchaseController extends Controller
         return response()->json(['status' => $status]);
     }
 
-    public function finish_purchase_succed()
+    public function finish_order_succed()
     {
         return view("finished_purchase_succed");
     }
 
-    public function finish_purchase_error()
+    public function finish_order_error()
     {
         // en este caso enviar tambien el order id
         return view("finished_purchase_error");

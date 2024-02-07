@@ -5,7 +5,8 @@
 @endsection
 
 @push('css-scripts')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <link rel="stylesheet" href="{{ asset('libs/splide/splide.min.css') }}">
+
     <style>
         .splide__pagination {
             visibility: hidden !important;
@@ -64,7 +65,7 @@
             <!--First item-->
             <div class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none h-full"
                 data-te-carousel-active data-te-carousel-item style="backface-visibility: hidden">
-                <img src="{{ asset('images/carousel_images/image1.jpg') }}" class="w-full h-full object-cover"
+                <img src="{{ asset('images/carousel-images/image1.jpg') }}" class="w-full h-full object-cover"
                     alt="..." />
                 <div class="absolute inset-x-[15%] bottom-10 py-5 text-center text-white block">
                     <h1 class="sm:text-2xl text-base sm:block hidden font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
@@ -79,7 +80,7 @@
             <!--Second item-->
             <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none h-full"
                 data-te-carousel-item style="backface-visibility: hidden">
-                <img src="{{ asset('images/carousel_images/image2.jpg') }}" class="w-full h-full object-cover"
+                <img src="{{ asset('images/carousel-images/image2.jpg') }}" class="w-full h-full object-cover"
                     alt="..." />
                 <div class="absolute inset-x-[15%] bottom-10 py-5 text-center text-white block">
                     <h2 class="sm:text-2xl text-base font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Online Practice
@@ -93,7 +94,7 @@
             <!--Third item-->
             <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none h-full"
                 data-te-carousel-item style="backface-visibility: hidden">
-                <img src="{{ asset('images/carousel_images/image3.jpg') }}" class="w-full h-full object-cover"
+                <img src="{{ asset('images/carousel-images/image3.jpg') }}" class="w-full h-full object-cover"
                     alt="..." />
                 <div class="absolute inset-x-[15%] bottom-10 py-5 text-center text-white block">
                     <h2 class="sm:text-2xl text-base font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Oxford Learner’s
@@ -115,24 +116,29 @@
             <p class="block text-xl">Formas de pago</p>
 
             <ul class="flex flex-wrap md:gap-16 gap-5 md:justify-around justify-start items-center">
-                <li><img class="md:h-10 h-8 rounded"
-                        src="https://brifly-media.s3.ap-south-1.amazonaws.com/s3fs-public/styles/large/public/article/2020-10/Paypal.png?itok=XofbtBOA"
-                        alt=""></li>
-                <li><img class="md:h-10 h-8 rounded" src="https://www.b-payment.com/docs/images/logos/Visa_logo.png"
+                <li>
+                    <img class="md:h-10 h-8 rounded" src="{{ asset('images/banks-logos/paypal.png') }}" alt="">
+                </li>
+                <li>
+                    <img class="md:h-10 h-8 rounded" src="{{ asset('images/banks-logos/visa.png') }}" alt="">
+                </li>
+                <li>
+                    <img class="md:h-10 h-8 rounded" src="{{ asset('images/banks-logos/mastercard.png') }}" alt="">
+                </li>
+                <li>
+                    <img class="md:h-10 h-8 rounded" src="{{ asset('images/banks-logos/american-express.png') }}"
                         alt="">
                 </li>
-                <li><img class="md:h-10 h-8 rounded"
-                        src="https://logos-world.net/wp-content/uploads/2020/09/Mastercard-Logo.png" alt="">
-                </li>
-                <li><img class="md:h-10 h-8 rounded"
-                        src="https://logos-world.net/wp-content/uploads/2020/11/American-Express-Logo.png" alt="">
-                </li>
-                <!--<li><img class="md:h-10 h-8 rounded"
-                                                                                                                src="https://d2a95c7k4laywg.cloudfront.net/wp-content/uploads/2021/03/bcp-logo-300x117.png"
-                                                                                                                alt=""></li>
-                                                                                                        <li><img class="md:h-10 h-8 rounded"
-                                                                                                                    src="https://yt3.googleusercontent.com/l048nvZUXxmhjaDjxdJntZWSj03oOAK0ETKCQZup-Ea-aM_h8M94Jz87cw8JiwCHSEbv8llH=s176-c-k-c0x00ffffff-no-rj"
-                                                                                                                    alt=""></li>-->
+                <!--<li>
+                                                                                                                                                                                                                    <img class="md:h-10 h-8 rounded"
+                                                                                                                                                                                                                        src="https://d2a95c7k4laywg.cloudfront.net/wp-content/uploads/2021/03/bcp-logo-300x117.png"
+                                                                                                                                                                                                                        alt="">
+                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                <li>
+                                                                                                                                                                                                                    <img class="md:h-10 h-8 rounded"
+                                                                                                                                                                                                                        src="https://yt3.googleusercontent.com/l048nvZUXxmhjaDjxdJntZWSj03oOAK0ETKCQZup-Ea-aM_h8M94Jz87cw8JiwCHSEbv8llH=s176-c-k-c0x00ffffff-no-rj"
+                                                                                                                                                                                                                        alt="">
+                                                                                                                                                                                                                </li>-->
             </ul>
         </div>
 
@@ -159,7 +165,7 @@
             $i = 1;
         @endphp
         @foreach ($group_products as $group_product)
-            <div class="py-5 md:px-32 px-10 @if ($i % 2 == 0) bg-gray-200 @else bg-gray-100 @endif">
+            <div class="py-5 md:px-32 px-10 @php echo $i % 2 == 0 ? 'bg-gray-200' : 'bg-gray-100' @endphp ">
                 <a href="{{ route('home.serie', ['serie' => $group_product['serie']]) }}"
                     class="hover:underline cursor-pointer decoration-gray-500">
                     <h2 class="text-2xl font-semibold text-gray-500 cursor-pointer inline" id="section1">
@@ -229,7 +235,7 @@
 
 
 @push('js-scripts')
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="{{ asset('libs/splide/splide.min.js') }}"></script>
 
     <script>
         for (let i = 1; i <= 5; i++) {

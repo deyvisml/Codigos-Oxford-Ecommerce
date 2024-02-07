@@ -9,7 +9,7 @@
     <meta property="og:url" content="https://codigosoxford.com" />
     @if (Route::currentRouteName() == 'products.show')
         <meta property="og:title" content="Codigos Oxford - {{ $product->name }}" />
-        <meta property="og:image:url" content="{{ $product->image }}" />
+        <meta property="og:image:url" content="{{ asset('images/products/' . basename($product->image)) }}" />
     @elseif (Route::currentRouteName() == 'series.show')
         <meta property="og:title" content="Codigos Oxford - {{ $current_serie->name }}" />
         <meta property="og:image:url" content="{{ asset('images/favicon.png') }}" />
@@ -21,8 +21,10 @@
         <meta property="og:image:url" content="{{ asset('images/favicon.png') }}" />
     @endif
     <meta property="og:description"
-        content="En nuestro e-commerce encontraras los codigos que necesitas para acceder a las plataformas de aprendizaje Oxford Learn, incluyendo Online Practice y e-books. Con nuestros codigos, tendras acceso a una amplia variedad de recursos educativos en linea que te ayudaran a mejorar tus habilidades linguisticas de manera efectiva y dinamica. ¡No esperes mas para empezar tu camino hacia el exito academico y profesional! Descubre nuestra seleccion de codigos y elige el que mejor se adapte a tus necesidades en nuestro sitio web." />
+        content="Encuentra los códigos y licencias para tus libros Oxford (OUP). Estos códigos te brindarán acceso a recursos como el Online Practice y e-books de colecciones como English File, American English File, Headway, ¡y muchas más!" />
 
+    <meta name="description"
+        content="Encuentra los códigos y licencias para tus libros Oxford (OUP). Estos códigos te brindarán acceso a recursos como el Online Practice y e-books de colecciones como English File, American English File, Headway, ¡y muchas más!">
 
     <title>Códigos Oxford - @yield('title')</title>
 

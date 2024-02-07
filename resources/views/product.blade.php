@@ -42,8 +42,8 @@
 @endpush
 
 @section('content')
-    <div class="my-8 mb-20 md:mx-32 sm:mx-10 mx-5">
-        <div class="flex gap-x-2 items-center flex-wrap sm:text-base text-sm">
+    <div class="mx-5 my-8 mb-20 md:mx-32 sm:mx-10">
+        <div class="flex flex-wrap items-center text-sm gap-x-2 sm:text-base">
             <a href="{{ route('home.index') }}" class="text-sky-800 hover:underline">Inicio</a>
 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor"
@@ -63,50 +63,51 @@
                 class="text-sky-800 hover:underline">{{ $serie->name }}</a>
         </div>
 
-        <h2 class="text-2xl font-semibold mt-5 border-b-2 pb-3">
+        <h2 class="pb-3 mt-5 text-2xl font-semibold border-b-2">
             {{ $product->name }}
         </h2>
 
-        <div class="flex my-5 flex-wrap justify-around py-5 items-start">
-            <div class="md:w-52 border rounded flex justify-center items-center h-52 p-5">
-                <img src="{{ $product->image }}" alt="" class="h-full object-contain max-w-[150px]">
+        <div class="flex flex-wrap items-start justify-around py-5 my-5">
+            <div class="flex items-center justify-center p-5 border rounded md:w-52 h-52">
+                <img src="{{ asset('images/products/' . basename($product->image)) }}" alt=""
+                    class="h-full object-contain max-w-[150px]">
             </div>
 
-            <div class="md:w-6/12 w-full md:m-5 mx-2 md:my-0 my-5 md:order-2 order-3">
+            <div class="order-3 w-full mx-2 my-5 md:w-6/12 md:m-5 md:my-0 md:order-2">
 
                 <p class="text-xl font-semibold">Caracteristicas principales</p>
 
-                <ul class="bg-white my-5 rounded">
+                <ul class="my-5 bg-white rounded">
                     <li class="flex border-b border-gray-300">
-                        <p class="w-1/3 font-bold text-sm bg-gray-100 p-3">Edición</p>
-                        <p class="w-2/3 text-sm p-3 bg-gray-50">{{ $product->edition }}</p>
+                        <p class="w-1/3 p-3 text-sm font-bold bg-gray-100">Edición</p>
+                        <p class="w-2/3 p-3 text-sm bg-gray-50">{{ $product->edition }}</p>
                     </li>
                     <li class="flex border-b border-gray-300">
-                        <p class="w-1/3 font-bold text-sm bg-gray-200 p-3">Formato</p>
-                        <p class="w-2/3 text-sm p-3 bg-gray-50">{{ $product->format }}</p>
+                        <p class="w-1/3 p-3 text-sm font-bold bg-gray-200">Formato</p>
+                        <p class="w-2/3 p-3 text-sm bg-gray-50">{{ $product->format }}</p>
                     </li>
                     <li class="flex border-b border-gray-300">
-                        <p class="w-1/3 font-bold text-sm bg-gray-100 p-3">Nivel</p>
-                        <p class="w-2/3 text-sm p-3 bg-gray-50">{{ $level->name }}</p>
+                        <p class="w-1/3 p-3 text-sm font-bold bg-gray-100">Nivel</p>
+                        <p class="w-2/3 p-3 text-sm bg-gray-50">{{ $level->name }}</p>
                     </li>
                     <li class="flex border-b border-gray-300">
-                        <p class="w-1/3 font-bold text-sm bg-gray-200 p-3">Duración</p>
-                        <p class="w-2/3 text-sm p-3 bg-gray-50">{{ $product->licence_length }}</p>
+                        <p class="w-1/3 p-3 text-sm font-bold bg-gray-200">Duración</p>
+                        <p class="w-2/3 p-3 text-sm bg-gray-50">{{ $product->licence_length }}</p>
                     </li>
                     <li class="flex border-b border-gray-300">
-                        <p class="w-1/3 font-bold text-sm bg-gray-100 p-3">ISBN</p>
-                        <p class="w-2/3 text-sm p-3 bg-gray-50">{{ $product->isbn }}</p>
+                        <p class="w-1/3 p-3 text-sm font-bold bg-gray-100">ISBN</p>
+                        <p class="w-2/3 p-3 text-sm bg-gray-50">{{ $product->isbn }}</p>
                     </li>
 
                 </ul>
             </div>
 
             <div
-                class="md:w-80 sm:w-auto md:my-0 my-5 w-full rounded bg-white shadow border-2 border-gray-100 p-4 md:order-3 order-2">
+                class="order-2 w-full p-4 my-5 bg-white border-2 border-gray-100 rounded shadow md:w-80 sm:w-auto md:my-0 md:order-3">
                 <p class="text-4xl font-semibold">{{ $product->price_usd }} USD</p>
-                <p class="my-3 text-sky-700 text-sm font-semibold">Stock disponible
+                <p class="my-3 text-sm font-semibold text-sky-700">Stock disponible
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-5 h-5 mb-1 inline-block">
+                        stroke="currentColor" class="inline-block w-5 h-5 mb-1">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
                     </svg>
@@ -114,7 +115,7 @@
 
                 <label for="cantidad" class="block my-2 text-sm font-semibold text-gray-700">Cantidad: (max 10)</label>
                 <input type="number" value="1" step="1" min="1" max="10"
-                    class="border-2 rounded outline-none p-2" id="cantidad">
+                    class="p-2 border-2 rounded outline-none" id="cantidad">
 
                 @auth
                     <button type="button" data-te-toggle="modal" data-te-target="#payment_modal" data-te-ripple-init
@@ -128,7 +129,7 @@
                         href="{{ route('login') }}">Comprar ahora</a>
                 @endguest
 
-                <div class="flex justify-center items-center w-full h-9 mt-3">
+                <div class="flex items-center justify-center w-full mt-3 h-9">
                     <img src="{{ asset('images/payment-methods.png') }}" alt="" class="object-contain max-h-full">
                 </div>
 
@@ -139,9 +140,9 @@
                     <div data-te-modal-dialog-ref
                         class="pointer-events-none relative flex min-h-[calc(100%-1rem)] w-auto translate-y-[-50px] items-center opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px]">
                         <div
-                            class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-white">
+                            class="relative flex flex-col w-full text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto bg-clip-padding dark:bg-white">
                             <div
-                                class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                                class="flex items-center justify-between flex-shrink-0 p-4 border-b-2 border-opacity-100 rounded-t-md border-neutral-100 dark:border-opacity-50">
                                 <!--Modal title-->
                                 <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-gray-600"
                                     id="payment_modalLabel">
@@ -149,10 +150,10 @@
                                 </h5>
                                 <!--Close button-->
                                 <button type="button"
-                                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                                    class="box-content border-none rounded-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
                                     data-te-modal-dismiss aria-label="Close">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                     </svg>
                                 </button>
@@ -172,8 +173,8 @@
             </div>
         </div>
 
-        <div class="md:mt-16 mt-8">
-            <h3 class="text-xl font-semibold pb-3 border-b-2">Productos similares</h3>
+        <div class="mt-8 md:mt-16">
+            <h3 class="pb-3 text-xl font-semibold border-b-2">Productos similares</h3>
 
             <div class="splide" id="splide-1">
                 <div class="splide__arrows">
@@ -192,27 +193,27 @@
                         </svg>
                     </button>
                 </div>
-                <div class="splide__track my-4">
+                <div class="my-4 splide__track">
                     <ul class="splide__list">
                         @foreach ($similar_products as $similar_product)
-                            <li class=" w-full splide__slide">
+                            <li class="w-full splide__slide">
                                 <div
-                                    class="border-2 border-gray-200 bg-white rounded-xl shadow sm:mx-2 mx-0 hover:shadow-xl">
+                                    class="mx-0 bg-white border-2 border-gray-200 shadow rounded-xl sm:mx-2 hover:shadow-xl">
                                     <a href="{{ route('products.index', ['product' => $similar_product]) }}"
                                         class="block p-3 cursor-pointer">
-                                        <div class="flex flex-col justify-center items-center text-center ">
-                                            <div class="w-full h-44 flex justify-center items-center">
-                                                <img src="{{ $similar_product->image }}" alt="imagen item"
-                                                    class="object-contain h-full max-w-[140px]">
+                                        <div class="flex flex-col items-center justify-center text-center ">
+                                            <div class="flex items-center justify-center w-full h-44">
+                                                <img src="{{ asset('images/products/' . basename($similar_product->image)) }}"
+                                                    alt="imagen item" class="object-contain h-full max-w-[140px]">
                                             </div>
 
                                             <div class="w-full text-start">
                                                 <p
-                                                    class="text-sm font-semibold pt-5  text-sky-900 h-24 hover:underline cursor-pointer">
+                                                    class="h-24 pt-5 text-sm font-semibold cursor-pointer text-sky-900 hover:underline">
                                                     {{ $similar_product->name }}
                                                 </p>
                                                 <p
-                                                    class="block text-start text-xs font-semibold mb-2 text-gray-600 cursor-pointer">
+                                                    class="block mb-2 text-xs font-semibold text-gray-600 cursor-pointer text-start">
                                                     ISBN: <span class="font-normal">{{ $similar_product->isbn }}</span>
                                                 </p>
                                                 <p class="text-2xl font-semibold text-gray-800 cursor-pointer">

@@ -5,28 +5,32 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <meta property="og:locale" content="es_ES">
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://codigosoxford.com" />
+    <meta property="og:site_name" content="Códigos Oxford">
+    <meta property="og:image" content="{{ asset('images/favicon.png') }}">
+
     @if (Route::currentRouteName() == 'products.show')
-        <meta property="og:title" content="Codigos Oxford - {{ $product->name }}" />
-        <meta property="og:image:url" content="{{ asset('images/products/' . basename($product->image)) }}" />
+        <meta property="og:title" content="{{ $product->name }} - Códigos Oxford" />
+        <meta property="og:image" content="{{ asset('images/products/' . basename($product->image)) }}" />
     @elseif (Route::currentRouteName() == 'series.show')
-        <meta property="og:title" content="Codigos Oxford - {{ $current_serie->name }}" />
-        <meta property="og:image:url" content="{{ asset('images/favicon.png') }}" />
+        <meta property="og:title" content="{{ $current_serie->name }} - Códigos Oxford" />
     @elseif (Route::currentRouteName() == 'schools.show')
-        <meta property="og:title" content="Codigos Oxford - {{ $current_school->name }}" />
-        <meta property="og:image:url" content="{{ asset('images/favicon.png') }}" />
+        <meta property="og:title" content="{{ $current_school->name }} - Códigos Oxford" />
     @else
         <meta property="og:title" content="Codigos Oxford" />
-        <meta property="og:image:url" content="{{ asset('images/favicon.png') }}" />
     @endif
+
+    <meta property="og:image" content="{{ asset('images/favicon.png') }}">
+
     <meta property="og:description"
         content="Encuentra los códigos y licencias para tus libros Oxford (OUP). Estos códigos te brindarán acceso a recursos como el Online Practice y e-books de colecciones como English File, American English File, Headway, ¡y muchas más!" />
 
     <meta name="description"
         content="Encuentra los códigos y licencias para tus libros Oxford (OUP). Estos códigos te brindarán acceso a recursos como el Online Practice y e-books de colecciones como English File, American English File, Headway, ¡y muchas más!">
 
-    <title>Códigos Oxford - @yield('title')</title>
+    <title>@yield('title') - Códigos Oxford</title>
 
 
     <link rel="icon" href="{{ asset('images/favicon.png') }}">

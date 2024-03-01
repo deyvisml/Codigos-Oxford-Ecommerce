@@ -22,8 +22,8 @@
                                     class="block p-3 cursor-pointer">
                                     <div class="flex flex-col justify-center items-center text-center ">
                                         <div class="w-full h-44 flex justify-center items-center">
-                                            <img src="{{ $product->image }}" alt="product image"
-                                                class="object-contain h-full max-w-[140px]">
+                                            <img src="{{ asset('images/products/' . basename($product->image)) }}"
+                                                alt="product image" class="object-contain h-full max-w-[140px]">
                                         </div>
 
                                         <div class="w-full text-start">

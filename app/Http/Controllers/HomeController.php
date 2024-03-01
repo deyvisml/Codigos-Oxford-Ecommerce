@@ -15,7 +15,7 @@ class HomeController extends Controller
         $series = Serie::inRandomOrder()->limit(20)->get();
 
         // get products from 5 diferent series
-        $id_series_selected = [99, 109, 101, 114, 128];
+        $id_series_selected = [109, 114, 99, 105, 128, 132];
 
         $group_products = array();
 

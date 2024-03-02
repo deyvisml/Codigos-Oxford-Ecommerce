@@ -318,7 +318,14 @@
                                 "currency_code": "USD",
                                 "value": total_price
                             }
-                        }]
+                        }],
+                        payment_source: {
+                            paypal: {
+                            experience_context: {
+                                shipping_preference: "NO_SHIPPING",
+                            },
+                            },
+                        },
                     });
                 },
 

@@ -175,7 +175,7 @@
     </main>
 
     <footer class="flex items-center justify-center h-24 bg-sky-200">
-        <p class="text-center">Códigos Oxford 2024 ©</p>
+        <p class="text-center">Códigos Oxford 2013-2024 ©</p>
     </footer>
 
 

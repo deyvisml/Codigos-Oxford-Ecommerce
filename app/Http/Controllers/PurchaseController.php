@@ -71,7 +71,7 @@ class PurchaseController extends Controller
 
         $status = "";
 
-        if ($details["status"] === "COMPLETED" && $paid_amount === $total_price) {
+        if ($details["status"] === "COMPLETED" && $paid_amount >= $total_price) {
             // Verifica si la relación "codes" tiene registros antes de ejecutar la consulta
             $available_codes = array();
             if ($product->codes->count() > 0) {

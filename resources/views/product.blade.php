@@ -292,6 +292,8 @@
     <script>
         function init_paypal_button() {
             let cantidad = document.querySelector("#cantidad").value;
+            let product_tax = 0.9;
+
             paypal.Buttons({
                 style: {
                     shape: 'rect',
@@ -309,15 +311,40 @@
 
                     let price_usd = {{ $product->price_usd }};
                     //price_usd = Number(price_usd.substring(2, price_usd.length));
-                    const total_price = price_usd * cantidad;
+                    const total_price_item = (price_usd * cantidad).toFixed(2);
+                    const total_price_tax = (product_tax * cantidad).toFixed(2);
 
                     return actions.order.create({
                         purchase_units: [{
-                            "description": `{{ $product->name }} x ${cantidad}`,
+                            "description": "Códigos Oxford",
                             "amount": {
                                 "currency_code": "USD",
-                                "value": total_price
-                            }
+                                "value": (Number(total_price_item) + Number(total_price_tax)).toFixed(2) ,
+                                "breakdown": {
+                                    "item_total": {
+                                        "currency_code": "USD",
+                                        "value": total_price_item,
+                                    },
+                                    "tax_total": {
+                                        "currency_code": "USD",
+                                        "value": total_price_tax,
+                                    }
+                                }
+                            },
+                            "items": [
+                                {
+                                    "name": "{{$product->name}}",
+                                    "quantity": cantidad,
+                                    "unit_amount": {
+                                        "currency_code": "USD",
+                                        "value": price_usd,
+                                    },
+                                    "tax": {
+                                        "currency_code": "USD",
+                                        "value": product_tax,
+                                    }
+                                }
+                            ]
                         }],
                         payment_source: {
                             paypal: {

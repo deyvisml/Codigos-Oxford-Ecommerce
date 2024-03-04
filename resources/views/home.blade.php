@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-    Inicio
+    Códigos y Licencias Oxford ✔️
 @endsection
+
+@push('headers')
+    <meta property="og:title" content="Codigos Oxford" />
+@endpush
 
 @push('css-scripts')
     <link rel="stylesheet" href="{{ asset('libs/splide/splide.min.css') }}">
@@ -66,7 +70,7 @@
             <div class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none h-full"
                 data-te-carousel-active data-te-carousel-item style="backface-visibility: hidden">
                 <img src="{{ asset('images/carousel-images/image1.jpg') }}" class="object-cover w-full h-full"
-                    alt="..." />
+                    alt="imagen promocional" title="promocion"/>
                 <div class="absolute inset-x-[15%] bottom-10 py-5 text-center text-white block">
                     <h1 class="sm:text-2xl text-base sm:block hidden font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                         Códigos Oxford
@@ -81,7 +85,7 @@
             <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none h-full"
                 data-te-carousel-item style="backface-visibility: hidden">
                 <img src="{{ asset('images/carousel-images/image2.jpg') }}" class="object-cover w-full h-full"
-                    alt="..." />
+                    alt="imagen promocional" title="promocion"/>
                 <div class="absolute inset-x-[15%] bottom-10 py-5 text-center text-white block">
                     <h2 class="sm:text-2xl text-base font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Online Practice
                     </h2>
@@ -95,7 +99,7 @@
             <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none h-full"
                 data-te-carousel-item style="backface-visibility: hidden">
                 <img src="{{ asset('images/carousel-images/image3.jpg') }}" class="object-cover w-full h-full"
-                    alt="..." />
+                    alt="imagen promocional" title="promocion"/>
                 <div class="absolute inset-x-[15%] bottom-10 py-5 text-center text-white block">
                     <h2 class="sm:text-2xl text-base font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Oxford Learner’s
                         Bookshelf
@@ -117,28 +121,27 @@
 
             <ul class="flex flex-wrap items-center justify-start gap-5 md:gap-16 md:justify-around">
                 <li>
-                    <img class="h-8 rounded md:h-10" src="{{ asset('images/banks-logos/paypal.png') }}" alt="">
+                    <img class="h-8 rounded md:h-10" src="{{ asset('images/banks-logos/paypal.png') }}" alt="imagen de forma de pago" title="forma de pago">
                 </li>
                 <li>
-                    <img class="h-8 rounded md:h-10" src="{{ asset('images/banks-logos/visa.png') }}" alt="">
+                    <img class="h-8 rounded md:h-10" src="{{ asset('images/banks-logos/visa.png') }}" alt="imagen de forma de pago" title="forma de pago">
                 </li>
                 <li>
-                    <img class="h-8 rounded md:h-10" src="{{ asset('images/banks-logos/mastercard.png') }}" alt="">
+                    <img class="h-8 rounded md:h-10" src="{{ asset('images/banks-logos/mastercard.png') }}" alt="imagen de forma de pago" title="forma de pago">
                 </li>
                 <li>
-                    <img class="h-8 rounded md:h-10" src="{{ asset('images/banks-logos/american-express.png') }}"
-                        alt="">
+                    <img class="h-8 rounded md:h-10" src="{{ asset('images/banks-logos/american-express.png') }}" alt="imagen de forma de pago" title="forma de pago">
                 </li>
                 <!--<li>
-                                                                                                                                                                                                                                                                                    <img class="h-8 rounded md:h-10"
-                                                                                                                                                                                                                                                                                        src="https://d2a95c7k4laywg.cloudfront.net/wp-content/uploads/2021/03/bcp-logo-300x117.png"
-                                                                                                                                                                                                                                                                                        alt="">
-                                                                                                                                                                                                                                                                                </li>
-                                                                                                                                                                                                                                                                                <li>
-                                                                                                                                                                                                                                                                                    <img class="h-8 rounded md:h-10"
-                                                                                                                                                                                                                                                                                        src="https://yt3.googleusercontent.com/l048nvZUXxmhjaDjxdJntZWSj03oOAK0ETKCQZup-Ea-aM_h8M94Jz87cw8JiwCHSEbv8llH=s176-c-k-c0x00ffffff-no-rj"
-                                                                                                                                                                                                                                                                                        alt="">
-                                                                                                                                                                                                                                                                                </li>-->
+                    <img class="h-8 rounded md:h-10"
+                        src="https://d2a95c7k4laywg.cloudfront.net/wp-content/uploads/2021/03/bcp-logo-300x117.png"
+                        alt="">
+                </li>
+                <li>
+                    <img class="h-8 rounded md:h-10"
+                        src="https://yt3.googleusercontent.com/l048nvZUXxmhjaDjxdJntZWSj03oOAK0ETKCQZup-Ea-aM_h8M94Jz87cw8JiwCHSEbv8llH=s176-c-k-c0x00ffffff-no-rj"
+                        alt="">
+                </li>-->
             </ul>
         </div>
 
@@ -148,7 +151,7 @@
             <ul class="flex flex-wrap justify-start gap-2 px-0 gap-y-3 sm:p-2">
                 @foreach ($series as $serie)
                     <li class="">
-                        <a href="{{ route('home.serie', ['serie' => $serie]) }}"
+                        <a href="{{ route('home.serie', ['serie' => $serie]) }}" title="{{$serie->name}}"
                             class="px-2 py-1 text-xs uppercase bg-gray-200 border-2 border-gray-300 rounded-md hover:bg-gray-300">
                             {{ $serie->name }}
                         </a>
@@ -166,7 +169,7 @@
         @endphp
         @foreach ($group_products as $group_product)
             <div class="py-5 md:px-32 px-10 @php echo $i % 2 == 0 ? 'bg-gray-200' : 'bg-gray-100' @endphp ">
-                <a href="{{ route('home.serie', ['serie' => $group_product['serie']]) }}"
+                <a href="{{ route('home.serie', ['serie' => $group_product['serie']]) }}" title="{{$group_product['serie']->name}}"
                     class="cursor-pointer hover:underline decoration-gray-500">
                     <h2 class="inline text-2xl font-semibold text-gray-500 cursor-pointer" id="section1">
                         {{ $group_product['serie']->name }}
@@ -195,19 +198,19 @@
                                 <li class="w-full splide__slide">
                                     <div
                                         class="mx-0 bg-white border-2 border-gray-200 shadow rounded-xl sm:mx-2 hover:shadow-xl">
-                                        <a href="{{ route('products.index', ['product' => $product]) }}"
+                                        <a href="{{ route('products.index', ['product' => $product]) }}" title="{{$product->name}}"
                                             class="block p-3 cursor-pointer">
                                             <div class="flex flex-col items-center justify-center text-center ">
                                                 <div class="flex items-center justify-center w-full h-44">
                                                     <img src="{{ asset('images/products/' . basename($product->image)) }}"
-                                                        alt="imagen item" class="object-contain h-full max-w-[140px]">
+                                                        alt="{{"imagen ". $product->name}}" title="{{$product->name}}" class="object-contain h-full max-w-[140px]">
                                                 </div>
 
                                                 <div class="w-full text-start">
-                                                    <p
+                                                    <h3
                                                         class="h-24 pt-5 text-sm font-semibold cursor-pointer text-sky-900 hover:underline">
                                                         {{ $product->name }}
-                                                    </p>
+                                                    </h3>
                                                     <p
                                                         class="block mb-2 text-xs font-semibold text-gray-600 cursor-pointer text-start">
                                                         ISBN: <span class="font-normal">{{ $product->isbn }}</span>

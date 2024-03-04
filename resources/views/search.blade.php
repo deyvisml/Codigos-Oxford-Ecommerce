@@ -18,12 +18,12 @@
                     @foreach ($products as $product)
                         <li class="md:w-1/5 sm:w-1/2 w-full min-w-[200px]">
                             <div class="border-2 border-gray-200 bg-white rounded-xl shadow sm:mx-2 mx-0 hover:shadow-xl">
-                                <a href="{{ route('products.index', ['product' => $product]) }}"
+                                <a href="{{ route('products.index', ['product' => $product]) }}" title="{{$product->name}}"
                                     class="block p-3 cursor-pointer">
                                     <div class="flex flex-col justify-center items-center text-center ">
                                         <div class="w-full h-44 flex justify-center items-center">
                                             <img src="{{ asset('images/products/' . basename($product->image)) }}"
-                                                alt="product image" class="object-contain h-full max-w-[140px]">
+                                                alt="imagen producto" title="{{$product->name}}" class="object-contain h-full max-w-[140px]">
                                         </div>
 
                                         <div class="w-full text-start">

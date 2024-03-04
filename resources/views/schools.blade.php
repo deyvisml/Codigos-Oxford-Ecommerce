@@ -4,6 +4,9 @@
     Instituciones
 @endsection
 
+@push('headers')
+    <meta property="og:title" content="{{ $current_school->name }} - Códigos Oxford" />
+@endpush
 
 @section('content')
     <div class="mx-5 my-8 mb-20 md:mx-32 sm:mx-10">

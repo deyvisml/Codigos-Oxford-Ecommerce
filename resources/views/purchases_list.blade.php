@@ -23,7 +23,7 @@
                             <div class="flex p-3 py-4 w-full sm:flex-nowrap flex-wrap">
                                 <div
                                     class="sm:w-28 h-28 p-2 sm:mb-0 mb-2 me-4 flex justify-center items-center border self-center w-full">
-                                    <img src="{{ $order['product']->image }}" alt="producto"
+                                    <img src="{{ $order['product']->image }}" alt="imagen producto" title="{{$order['product']->name}}"
                                         class="object-contain h-full max-w-[70px]">
                                 </div>
                                 <div class="text-sm md:w-3/4 w-full">
@@ -46,7 +46,7 @@
                                     <ul class="flex justify-between items-start sm:flex-nowrap flex-wrap">
                                         <li class="sm:w-3/5 w-full mb-2">
                                             <p class="font-bold py-1">Elemento</p>
-                                            <a href="{{ route('products.index', ['product' => $order['product']]) }}"
+                                            <a href="{{ route('products.index', ['product' => $order['product']]) }}" title="{{$order['product']->name}}"
                                                 class="underline cursor-pointer text-sky-800">
                                                 {{ $order['product']->name }}
                                             </a>

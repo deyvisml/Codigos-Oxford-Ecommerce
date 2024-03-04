@@ -3,45 +3,40 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta property="og:locale" content="es_ES">
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://codigosoxford.com" />
-    <meta property="og:site_name" content="Códigos Oxford">
-    <meta property="og:image" content="{{ asset('images/favicon.png') }}">
-
-    @if (Route::currentRouteName() == 'products.show')
-        <meta property="og:title" content="{{ $product->name }} - Códigos Oxford" />
-        <meta property="og:image" content="{{ asset('images/products/' . basename($product->image)) }}" />
-    @elseif (Route::currentRouteName() == 'series.show')
-        <meta property="og:title" content="{{ $current_serie->name }} - Códigos Oxford" />
-    @elseif (Route::currentRouteName() == 'schools.show')
-        <meta property="og:title" content="{{ $current_school->name }} - Códigos Oxford" />
-    @else
-        <meta property="og:title" content="Codigos Oxford" />
-    @endif
-
-    <meta property="og:image" content="{{ asset('images/favicon.png') }}">
-
-    <meta property="og:description"
-        content="Encuentra los códigos y licencias para tus libros Oxford (OUP). Estos códigos te brindarán acceso a recursos como el Online Practice y e-books de colecciones como English File, American English File, Headway, ¡y muchas más!" />
+    
+    <title>@yield('title') - Códigos Oxford</title>
 
     <meta name="description"
         content="Encuentra los códigos y licencias para tus libros Oxford (OUP). Estos códigos te brindarán acceso a recursos como el Online Practice y e-books de colecciones como English File, American English File, Headway, ¡y muchas más!">
+    <meta name="keywords" content="Comprar código Oxford, practica en linea, English File, American English File, Código Oxford España, Libros American English File, pdf, audios">
+    <meta name="author" content="Códigos Oxford">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-    <title>@yield('title') - Códigos Oxford</title>
+    <link rel="canonical" href="{{ url()->current(); }}"/>
 
+    <link rel="icon" href="{{ asset('images/icons/favicon-16x16.png') }}" sizes="16x16">
+    <link rel="icon" href="{{ asset('images/icons/favicon-32x32.png') }}" sizes="32x32">
+    <link rel="shortcut icon" href="{{ asset('images/icons/favicon-192x192.png') }}" sizes="192x192">
+    <link rel="shortcut icon" href="{{ asset('images/icons/favicon-512x512.png') }}" sizes="512x512">
+    <link rel="apple-touch-icon" href="{{ asset('images/icons/favicon-180x180.png') }}" sizes="180x180">
 
-    <link rel="icon" href="{{ asset('images/favicon.png') }}">
-
-
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="@yield('title') - Códigos Oxford">
+    <meta property="og:description"
+    content="Encuentra los códigos y licencias para tus libros Oxford (OUP). Estos códigos te brindarán acceso a recursos como el Online Practice y e-books de colecciones como English File, American English File, Headway, ¡y muchas más!" />
+    <meta property="og:url" content="https://codigosoxford.com" />
+    <meta property="og:site_name" content="Códigos-Oxford">
+    <meta property="og:image" content="{{ asset('images/favicon-152.png') }}">    
+        
+    @stack('headers')
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
-
     <link rel="stylesheet" href="{{ asset('libs/tw-elements/tw-elements.min.css') }}">
+    @stack('css-scripts')
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @stack('css-scripts')
 </head>
 
 <body class="">
@@ -59,8 +54,8 @@
 
     <nav class="flex flex-wrap items-center justify-between px-4 py-2 md:px-32 sm:px-10 bg-sky-900 sm:gap-x-4 gap-x-2">
         <div class="flex flex-wrap items-center justify-center w-full md:justify-between md:w-2/12">
-            <a href="/" class="w-auto">
-                <img src="{{ asset('images/logo.png') }}" alt="imagen logo" class="object-contain max-h-[75px]">
+            <a href="/" class="w-auto" title="Inicio">
+                <img src="{{ asset('images/logo.png') }}" alt="imagen logo" title="logo códigos oxford" class="object-contain max-h-[75px]">
             </a>
         </div>
 
@@ -108,10 +103,10 @@
                 @foreach ($countries as $country)
                     <li>
                         <a class="block w-full px-4 py-2 text-sm font-normal bg-transparent whitespace-nowrap text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                            href="{{ route('schools.index', ['country' => $country]) }}" data-te-dropdown-item-ref>
+                            href="{{ route('schools.index', ['country' => $country]) }}" title="{{$country->name}}" data-te-dropdown-item-ref>
                             {{ $country->name }}
                             <img src="{{ asset('images/country-flags/' . $country->flag) }}"
-                                class="inline-block w-6 h-6 mb-1 ms-2" alt="">
+                                class="inline-block w-6 h-6 mb-1 ms-2" alt="{{$country->flag}}" title="{{$country->flag}}">
                         </a>
                     </li>
                 @endforeach
@@ -124,11 +119,11 @@
                 <div class="relative" data-te-dropdown-ref>
                     <!-- Second dropdown trigger -->
                     <a class="flex items-center justify-center transition duration-150 ease-in-out cursor-pointer hidden-arrow whitespace-nowrap motion-reduce:transition-none"
-                        href="#" id="dropdownMenuButton2" role="button" data-te-dropdown-toggle-ref
+                        href="#" title="opciones de usuario" id="dropdownMenuButton2" role="button" data-te-dropdown-toggle-ref
                         aria-expanded="false">
                         <!-- User avatar -->
                         <img src="{{ auth()->user()->picture }}"
-                            class="border-2 rounded-full w-9 h-9 border-neutral-300 me-2" alt="" loading="lazy" />
+                            class="border-2 rounded-full w-9 h-9 border-neutral-300 me-2" alt="user image" title="user" loading="lazy" />
                         <p class="text-sm cursor-pointer text-neutral-100 me-1">{{ auth()->user()->first_name }}</p>
 
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -142,17 +137,17 @@
                         <!-- Second dropdown menu items -->
                         <li>
                             <a class="block w-full px-4 py-2 text-sm font-normal bg-transparent whitespace-nowrap text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
-                                href="{{ route('purchase.list') }}" data-te-dropdown-item-ref>Mis compras</a>
+                                href="{{ route('purchase.list') }}" title="mis compras" data-te-dropdown-item-ref>Mis compras</a>
                         </li>
                         <li>
                             <a class="block w-full px-4 py-2 text-sm font-normal bg-transparent whitespace-nowrap text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
-                                href="/google-auth/logout" data-te-dropdown-item-ref>Salir</a>
+                                href="/google-auth/logout" title="salir" data-te-dropdown-item-ref title="salir">Salir</a>
                         </li>
                     </ul>
                 </div>
             @endauth
             @guest
-                <a href="/google-auth/redirect" class="text-left text-gray-100">Ingresar / Registrarse</a>
+                <a href="/google-auth/redirect" title="ingresar" class="text-left text-gray-100">Ingresar / Registrarse</a>
             @endguest
         </div>
     </nav>
@@ -161,7 +156,7 @@
             @foreach ($categories as $category)
                 <li
                     class="{{ isset($current_category) ? ($category->id === $current_category->id ? 'bg-neutral-200' : '') : '' }} sm:w-auto w-full">
-                    <a href="{{ route('series.index', ['category' => $category]) }}"
+                    <a href="{{ route('series.index', ['category' => $category]) }}" title="{{$category->name}}"
                         class="block p-1 px-4 text-gray-900 hover:text-black hover:bg-neutral-200">
                         {{ $category->name }}
                     </a>

@@ -5,8 +5,25 @@
 @endsection
 
 @push('headers')
+    <meta name="description" content="Adquiere tu código para {{$product->name}} ({{$product->isbn}}), edición {{$product->edition}}, serie {{$serie->name}}, precio {{$product->price_usd}} USD, duración {{$product->licence_length}}">
     <meta property="og:title" content="{{ $product->name }} - Códigos Oxford" />
     <meta property="og:image" content="{{ asset('images/products/' . basename($product->image)) }}" />
+
+    <!-- Marcado JSON-LD generado por el Asistente para el marcado de datos estructurados de Google. -->
+    <script type="application/ld+json">
+        {
+        "@context": "http://schema.org",
+        "@type": "Product",
+        "name": "{{$product->name}}",
+        "image": "{{ asset('images/products/' . basename($product->image)) }}",
+        "description": "Edición {{ $product->edition }}, Formato {{ $product->format }}, Nivel {{ $level->name }}, Duración {{ $product->licence_length }}, ISBN {{ $product->isbn }}",
+        "url": "{{ url()->current(); }}",
+        "offers": {
+                "@type": "Offer",
+                "price": "{{$product->price_usd}} USD"
+            }
+        }
+    </script>
 @endpush
 
 @push('css-scripts')

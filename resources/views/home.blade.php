@@ -5,7 +5,38 @@
 @endsection
 
 @push('headers')
+    <meta name="description" content="Encuentra los códigos y licencias para tus libros Oxford (OUP). Estos códigos te brindarán acceso a recursos como el Online Practice y e-books de colecciones como English File, American English File, Headway, ¡y muchas más!">
+
+    <meta property="og:image" content="{{ asset('images/icons/favicon-192x192.png') }}">
     <meta property="og:title" content="Codigos Oxford" />
+
+    <!-- icons are only defined in main page -->
+    <!-- for all browsers -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/icons/favicon-32x32.png') }}" >
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/icons/favicon-16x16.png') }}" >
+    
+    <!-- for google and android -->
+    <link rel="icon" type="image/png" sizes="48x48" href="{{ asset('images/icons/favicon-48x48.png') }}" >
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('images/icons/favicon-96x96.png') }}" >
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('images/icons/favicon-192x192.png') }}" >
+    
+    <!-- for ipad -->
+    <link rel="apple-touch-icon" type="image/png" sizes="167x167" href="{{ asset('images/icons/favicon-167x167.png') }}">
+    
+    <!-- for iphone -->
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="{{ asset('images/icons/favicon-180x180.png') }}">
+
+    <!-- WebSite structured data (datos estructurados) -->
+    <script type="application/ld+json">
+        {
+          "@context" : "https://schema.org",
+          "@type" : "WebSite",
+          "name" : "Códigos Oxford",
+          "url" : "https://codigosoxford.com/"
+          "image": "{{ asset('images/icons/favicon-192x192.png') }}"
+          "description": "Encuentra los códigos y licencias para tus libros Oxford (OUP). Estos códigos te brindarán acceso a recursos como el Online Practice y e-books de colecciones como English File, American English File, Headway, ¡y muchas más!",
+        }
+    </script>
 @endpush
 
 @push('css-scripts')

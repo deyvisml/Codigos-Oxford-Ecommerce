@@ -6,19 +6,11 @@
     
     <title>@yield('title') - Códigos Oxford</title>
 
-    <meta name="description"
-        content="Encuentra los códigos y licencias para tus libros Oxford (OUP). Estos códigos te brindarán acceso a recursos como el Online Practice y e-books de colecciones como English File, American English File, Headway, ¡y muchas más!">
     <meta name="keywords" content="Comprar código Oxford, practica en linea, English File, American English File, Código Oxford España, Libros American English File, pdf, audios">
     <meta name="author" content="Códigos Oxford">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
     <link rel="canonical" href="{{ url()->current(); }}"/>
-
-    <link rel="icon" href="{{ asset('images/icons/favicon-16x16.png') }}" sizes="16x16">
-    <link rel="icon" href="{{ asset('images/icons/favicon-32x32.png') }}" sizes="32x32">
-    <link rel="shortcut icon" href="{{ asset('images/icons/favicon-192x192.png') }}" sizes="192x192">
-    <link rel="shortcut icon" href="{{ asset('images/icons/favicon-512x512.png') }}" sizes="512x512">
-    <link rel="apple-touch-icon" href="{{ asset('images/icons/favicon-180x180.png') }}" sizes="180x180">
 
     <meta property="og:locale" content="es_ES">
     <meta property="og:type" content="website" />
@@ -26,8 +18,8 @@
     <meta property="og:description"
     content="Encuentra los códigos y licencias para tus libros Oxford (OUP). Estos códigos te brindarán acceso a recursos como el Online Practice y e-books de colecciones como English File, American English File, Headway, ¡y muchas más!" />
     <meta property="og:url" content="https://codigosoxford.com" />
-    <meta property="og:site_name" content="Códigos-Oxford">
-    <meta property="og:image" content="{{ asset('images/favicon-152.png') }}">    
+    <meta property="og:site_name" content="Códigos Oxford">
+    <meta property="og:image" content="{{ asset('images/icons/favicon-192x192.png') }}">
         
     @stack('headers')
         

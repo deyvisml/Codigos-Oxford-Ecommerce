@@ -7,8 +7,7 @@
 @push('headers')
     <meta name="description" content="Encuentra los códigos y licencias para tus libros Oxford (OUP). Estos códigos te brindarán acceso a recursos como el Online Practice y e-books de colecciones como English File, American English File, Headway, ¡y muchas más!">
 
-    <meta property="og:image" content="{{ asset('images/icons/favicon-192x192.png') }}">
-    <meta property="og:title" content="Codigos Oxford" />
+    <meta property="og:title" content="Códigos Oxford" />
 
     <!-- icons are only defined in main page -->
     <!-- for all browsers -->
@@ -32,9 +31,9 @@
           "@context" : "https://schema.org",
           "@type" : "WebSite",
           "name" : "Códigos Oxford",
-          "url" : "https://codigosoxford.com/"
-          "image": "{{ asset('images/icons/favicon-192x192.png') }}"
-          "description": "Encuentra los códigos y licencias para tus libros Oxford (OUP). Estos códigos te brindarán acceso a recursos como el Online Practice y e-books de colecciones como English File, American English File, Headway, ¡y muchas más!",
+          "url" : "https://codigosoxford.com/",
+          "image": "{{ asset('images/icons/favicon-192x192.png') }}",
+          "description": "Encuentra los códigos y licencias para tus libros Oxford (OUP). Estos códigos te brindarán acceso a recursos como el Online Practice y e-books de colecciones como English File, American English File, Headway, ¡y muchas más!"
         }
     </script>
 @endpush

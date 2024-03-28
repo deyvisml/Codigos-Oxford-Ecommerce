@@ -19,7 +19,7 @@
     content="Encuentra los códigos y licencias para tus libros Oxford (OUP). Estos códigos te brindarán acceso a recursos como el Online Practice y e-books de colecciones como English File, American English File, Headway, ¡y muchas más!" />
     <meta property="og:url" content="https://codigosoxford.com" />
     <meta property="og:site_name" content="Códigos Oxford">
-    <meta property="og:image" content="{{ asset('images/icons/favicon-192x192.png') }}">
+    <meta property="og:image" content="{{ asset('images/icons/favicon-512x512.png') }}?5">
         
     @stack('headers')
         

@@ -9,22 +9,6 @@
 
     <meta property="og:title" content="Códigos Oxford" />
 
-    <!-- icons are only defined in main page -->
-    <!-- for all browsers -->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/icons/favicon-32x32.png') }}" >
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/icons/favicon-16x16.png') }}" >
-    
-    <!-- for google and android -->
-    <link rel="icon" type="image/png" sizes="48x48" href="{{ asset('images/icons/favicon-48x48.png') }}" >
-    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('images/icons/favicon-96x96.png') }}" >
-    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('images/icons/favicon-192x192.png') }}" >
-    
-    <!-- for ipad -->
-    <link rel="apple-touch-icon" type="image/png" sizes="167x167" href="{{ asset('images/icons/favicon-167x167.png') }}">
-    
-    <!-- for iphone -->
-    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="{{ asset('images/icons/favicon-180x180.png') }}">
-
     <!-- WebSite structured data (datos estructurados) -->
     <script type="application/ld+json">
         {
@@ -78,7 +62,6 @@
 
 @section('content')
     <!-- Carousel imagenes -->
-
     <div id="carouselExampleCaptions" class="relative md:h-80 sm:h-72 h-44" data-te-carousel-init data-te-carousel-slide>
         <!--Carousel indicators-->
         <div class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
@@ -141,120 +124,121 @@
             </div>
         </div>
     </div>
-
     <!-- END Carousel imagenes -->
 
-    <div class="bg-gray-200 border">
-        <div
-            class="flex flex-wrap items-center p-5 mx-5 my-8 bg-white shadow md:mx-32 sm:mx-10 border-s-4 border-sky-600 gap-x-10 gap-y-5">
-            <p class="block text-xl">Formas de pago</p>
+    <div class="bg-slate-200 border">
+        <div class="max-w-7xl mx-auto px-2">
+            <div
+                class="flex flex-wrap items-center p-5 my-8 bg-white shadow  border-s-4 border-sky-600 gap-x-10 gap-y-5">
+                <p class="block text-xl">Formas de pago</p>
 
-            <ul class="flex flex-wrap items-center justify-start gap-5 md:gap-16 md:justify-around">
-                <li>
-                    <img class="h-8 rounded md:h-10" src="{{ asset('images/banks-logos/paypal.png') }}" alt="imagen de forma de pago" title="forma de pago">
-                </li>
-                <li>
-                    <img class="h-8 rounded md:h-10" src="{{ asset('images/banks-logos/visa.png') }}" alt="imagen de forma de pago" title="forma de pago">
-                </li>
-                <li>
-                    <img class="h-8 rounded md:h-10" src="{{ asset('images/banks-logos/mastercard.png') }}" alt="imagen de forma de pago" title="forma de pago">
-                </li>
-                <li>
-                    <img class="h-8 rounded md:h-10" src="{{ asset('images/banks-logos/american-express.png') }}" alt="imagen de forma de pago" title="forma de pago">
-                </li>
-                <!--<li>
-                    <img class="h-8 rounded md:h-10"
-                        src="https://d2a95c7k4laywg.cloudfront.net/wp-content/uploads/2021/03/bcp-logo-300x117.png"
-                        alt="">
-                </li>
-                <li>
-                    <img class="h-8 rounded md:h-10"
-                        src="https://yt3.googleusercontent.com/l048nvZUXxmhjaDjxdJntZWSj03oOAK0ETKCQZup-Ea-aM_h8M94Jz87cw8JiwCHSEbv8llH=s176-c-k-c0x00ffffff-no-rj"
-                        alt="">
-                </li>-->
-            </ul>
-        </div>
-
-        <div class="p-5 mx-5 my-8 bg-white shadow md:mx-32 sm:mx-10 border-s-4 border-sky-600">
-            <p class="block mb-3 font-semibold">Titulos o series</p>
-
-            <ul class="flex flex-wrap justify-start gap-2 px-0 gap-y-3 sm:p-2">
-                @foreach ($series as $serie)
-                    <li class="">
-                        <a href="{{ route('home.serie', ['serie' => $serie]) }}" title="{{$serie->name}}"
-                            class="px-2 py-1 text-xs uppercase bg-gray-200 border-2 border-gray-300 rounded-md hover:bg-gray-300">
-                            {{ $serie->name }}
-                        </a>
+                <ul class="flex flex-wrap items-center justify-start gap-5 md:gap-16 md:justify-around">
+                    <li>
+                        <img class="h-8 rounded md:h-10" src="{{ asset('images/banks-logos/paypal.png') }}" alt="imagen de forma de pago" title="forma de pago">
                     </li>
-                @endforeach
-            </ul>
+                    <li>
+                        <img class="h-8 rounded md:h-10" src="{{ asset('images/banks-logos/visa.png') }}" alt="imagen de forma de pago" title="forma de pago">
+                    </li>
+                    <li>
+                        <img class="h-8 rounded md:h-10" src="{{ asset('images/banks-logos/mastercard.png') }}" alt="imagen de forma de pago" title="forma de pago">
+                    </li>
+                    <li>
+                        <img class="h-8 rounded md:h-10" src="{{ asset('images/banks-logos/american-express.png') }}" alt="imagen de forma de pago" title="forma de pago">
+                    </li>
+                    <!--<li>
+                        <img class="h-8 rounded md:h-10"
+                            src="https://d2a95c7k4laywg.cloudfront.net/wp-content/uploads/2021/03/bcp-logo-300x117.png"
+                            alt="">
+                    </li>
+                    <li>
+                        <img class="h-8 rounded md:h-10"
+                            src="https://yt3.googleusercontent.com/l048nvZUXxmhjaDjxdJntZWSj03oOAK0ETKCQZup-Ea-aM_h8M94Jz87cw8JiwCHSEbv8llH=s176-c-k-c0x00ffffff-no-rj"
+                            alt="">
+                    </li>-->
+                </ul>
+            </div>
+
+            <div class="p-5  my-8 bg-white shadow  border-s-4 border-sky-600">
+                <p class="block mb-3 font-semibold">Titulos o series</p>
+
+                <ul class="flex flex-wrap justify-start gap-2 px-0 gap-y-3 sm:p-2">
+                    @foreach ($series as $serie)
+                        <li class="">
+                            <a href="{{ route('home.serie', ['serie' => $serie]) }}" title="{{$serie->name}}"
+                                class="px-2 py-1 text-xs uppercase bg-gray-200 border-2 border-gray-300 rounded-md hover:bg-gray-300">
+                                {{ $serie->name }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
     </div>
 
-
-
-    <div class="mb-20 bg-gray-100">
+    <div class="mb-20 ">
         @php
             $i = 1;
         @endphp
         @foreach ($group_products as $group_product)
-            <div class="py-5 md:px-32 px-10 @php echo $i % 2 == 0 ? 'bg-gray-200' : 'bg-gray-100' @endphp ">
-                <a href="{{ route('home.serie', ['serie' => $group_product['serie']]) }}" title="{{$group_product['serie']->name}}"
-                    class="cursor-pointer hover:underline decoration-gray-500">
-                    <h2 class="inline text-2xl font-semibold text-gray-500 cursor-pointer" id="section1">
-                        {{ $group_product['serie']->name }}
-                    </h2>
-                </a>
-                <div class="splide" id="splide-{{ $i }}">
-                    <div class="splide__arrows">
-                        <button class="bg-gray-900 shadow splide__arrow splide__arrow--prev">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6 text-white">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </button>
-                        <button class="bg-gray-900 shadow splide__arrow splide__arrow--next">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6 text-white">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="my-4 splide__track">
-                        <ul class="splide__list">
-                            @foreach ($group_product['products'] as $product)
-                                <li class="w-full splide__slide">
-                                    <div
-                                        class="mx-0 bg-white border-2 border-gray-200 shadow rounded-xl sm:mx-2 hover:shadow-xl">
-                                        <a href="{{ route('products.index', ['product' => $product]) }}" title="{{$product->name}}"
-                                            class="block p-3 cursor-pointer">
-                                            <div class="flex flex-col items-center justify-center text-center ">
-                                                <div class="flex items-center justify-center w-full h-44">
-                                                    <img src="{{ asset('images/products/' . basename($product->image)) }}"
-                                                        alt="{{"imagen ". $product->name}}" title="{{$product->name}}" class="object-contain h-full max-w-[140px]">
+            <div class="py-5  @php echo $i % 2 == 0 ? 'bg-gray-200' : 'bg-gray-100' @endphp ">
+                <div class="max-w-7xl mx-auto px-2">
+                    <a href="{{ route('home.serie', ['serie' => $group_product['serie']]) }}" title="{{$group_product['serie']->name}}"
+                        class="cursor-pointer hover:underline decoration-gray-500">
+                        <h2 class="inline text-2xl font-semibold text-gray-500 cursor-pointer" id="section1">
+                            {{ $group_product['serie']->name }}
+                        </h2>
+                    </a>
+                    <div class="splide" id="splide-{{ $i }}">
+                        <div class="splide__arrows">
+                            <button class="bg-gray-900 shadow splide__arrow splide__arrow--prev">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" class="w-6 h-6 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                                </svg>
+                            </button>
+                            <button class="bg-gray-900 shadow splide__arrow splide__arrow--next">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" class="w-6 h-6 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="my-4 splide__track">
+                            <ul class="splide__list">
+                                @foreach ($group_product['products'] as $product)
+                                    <li class="w-full splide__slide">
+                                        <div
+                                            class="mx-0 bg-white border-2 border-gray-200 shadow rounded-xl sm:mx-2 hover:shadow-xl">
+                                            <a href="{{ route('products.index', ['product' => $product]) }}" title="{{$product->name}}"
+                                                class="block p-3 cursor-pointer">
+                                                <div class="flex flex-col items-center justify-center text-center ">
+                                                    <div class="flex items-center justify-center w-full h-44">
+                                                        <img src="{{ asset('images/products/' . basename($product->image)) }}"
+                                                            alt="{{"imagen ". $product->name}}" title="{{$product->name}}" class="object-contain h-full max-w-[140px]">
+                                                    </div>
+    
+                                                    <div class="w-full text-start">
+                                                        <h3
+                                                            class="h-24 pt-5 text-sm font-semibold cursor-pointer text-sky-900 hover:underline">
+                                                            {{ $product->name }}
+                                                        </h3>
+                                                        <p
+                                                            class="block mb-2 text-xs font-semibold text-gray-600 cursor-pointer text-start">
+                                                            ISBN: <span class="font-normal">{{ $product->isbn }}</span>
+                                                        </p>
+                                                        <p class="text-2xl font-semibold text-gray-800 cursor-pointer">
+                                                            {{ number_format($product->price_usd, 2) }} USD
+                                                        </p>
+                                                    </div>
                                                 </div>
-
-                                                <div class="w-full text-start">
-                                                    <h3
-                                                        class="h-24 pt-5 text-sm font-semibold cursor-pointer text-sky-900 hover:underline">
-                                                        {{ $product->name }}
-                                                    </h3>
-                                                    <p
-                                                        class="block mb-2 text-xs font-semibold text-gray-600 cursor-pointer text-start">
-                                                        ISBN: <span class="font-normal">{{ $product->isbn }}</span>
-                                                    </p>
-                                                    <p class="text-2xl font-semibold text-gray-800 cursor-pointer">
-                                                        {{ $product->price_usd }} USD
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
+                                            </a>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

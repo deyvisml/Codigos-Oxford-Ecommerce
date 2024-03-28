@@ -25,9 +25,10 @@ class Product extends Model
     ];
 
     // problem with route model bidding custom keys https://stackoverflow.com/a/61073459/15694873
-    /*public function getRouteKeyName()
+    /*
+    public function getRouteKeyName()
     {
-        return 'isbn';
+    return 'name';
     }*/
 
     public function level()
@@ -35,7 +36,7 @@ class Product extends Model
         return $this->belongsTo(Level::class)->select(["id", "name"]);
     }
 
-    // https://stackoverflow.com/a/63803927/15694873 
+    // https://stackoverflow.com/a/63803927/15694873
     public function serie()
     {
         $level = Level::find($this->level->id);

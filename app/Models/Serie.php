@@ -10,14 +10,15 @@ class Serie extends Model
     use HasFactory;
 
     // problem with route model bidding custom keys https://stackoverflow.com/a/61073459/15694873
+    /*
     public function getRouteKeyName()
     {
-        return 'name';
-    }
+    return 'name';
+    }*/
 
     protected $fillable = [
         "name",
-        "category_id"
+        "category_id",
     ];
 
     public function levels()

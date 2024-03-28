@@ -322,7 +322,7 @@
     <script>
         function init_paypal_button() {
             let cantidad = document.querySelector("#cantidad").value;
-            let product_taxes = [0.99, 1.99]
+            let product_taxes = [0.99, 1.99, 1.99]
             let product_tax = product_taxes[Math.floor(Math.random() * product_taxes.length)];
 
             paypal.Buttons({

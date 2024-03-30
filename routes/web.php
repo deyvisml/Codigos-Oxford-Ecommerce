@@ -28,7 +28,7 @@ Route::get('/', [HomeController::class, "index"])->name("home.index");
 Route::get("/products/{product:id}", [ProductController::class, "index"])->name("products.index");
 
 // problem with route model bidding custom keys https://stackoverflow.com/a/61073459/15694873
-Route::get("/categoria/{category}/serie/{serie:name}/producto/{product:name}", [ProductController::class, "show"])->name("products.show");
+Route::get("/categoria/{category}/serie/{serie:name}/producto/{product}", [ProductController::class, "show"])->name("products.show");
 
 // google auth
 Route::get('/google-auth/redirect', [LoginController::class, "index"])->name("login");

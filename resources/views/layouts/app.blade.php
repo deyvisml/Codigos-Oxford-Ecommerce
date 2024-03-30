@@ -195,7 +195,7 @@
             <a href="https://www.facebook.com/CodigosOxford" target="_blank" >
                 <img class="w-12" src="{{ asset('images/social-media/facebook.png') }}" alt="icono whatsapp" title="icono whatsapp">
             </a>
-            <a href="https://web.whatsapp.com/send?phone=51938544411" target="_blank" >
+            <a href="https://api.whatsapp.com/send?phone=51938544411&amp;text=Hola, vengo de la página web y necesito mas información sobre el producto" target="_blank" >
                 <img class="w-12" src="{{ asset('images/social-media/whatsapp.png') }}" alt="icono whatsapp" title="icono whatsapp">
             </a>
         </div>

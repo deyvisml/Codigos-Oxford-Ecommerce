@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Serie;
-use Illuminate\Http\Request;
 
 class SerieController extends Controller
 {
     public function index(Category $category)
     {
-        // get a serie of the category and redirect  
+        // get a serie of the category and redirect
 
         if ($category->series->count() > 0) {
             $serie = $category->series->toQuery()->orderBy('name', 'ASC')->first();
@@ -31,8 +30,7 @@ class SerieController extends Controller
         // get series levels
         $levels = $serie->levels;
 
-
-        // get products for the current school
+        // get products for the current serie
         $product_groups = array();
 
         $i = 0;

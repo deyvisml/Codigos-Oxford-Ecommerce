@@ -9,6 +9,7 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SerieController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 // google auth
 
@@ -53,3 +54,10 @@ Route::get("/compra_exitosa", [PurchaseController::class, "finish_purchase_succe
 Route::get("/compra_error", [PurchaseController::class, "finish_purchase_error"])->name("purchase.finish_error");
 
 Route::get("/mis_compras", [PurchaseController::class, "purchases_list"])->name("purchase.list");
+
+/*
+Route::get('/clear-cache', function() {
+    Artisan::call('optimize:clear');
+    return "Cache cleared successfully!";
+});
+*/

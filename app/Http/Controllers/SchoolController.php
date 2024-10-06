@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Country;
 use App\Models\ProductSchoolLevel;
 use App\Models\School;
-use Illuminate\Http\Request;
 
 class SchoolController extends Controller
 {
@@ -48,6 +47,8 @@ class SchoolController extends Controller
 
             $product_groups[$i]["products"] = ProductSchoolLevel::join("products", "product_school_level.product_id", "=", "products.id")
                 ->where("product_school_level.school_level_id", $school_level->id)
+                ->where('product_school_level.state_id', 1)
+                ->where('products.state_id', 1)
                 ->orderBy("products.name", "ASC")
                 ->select("products.*") // muy importante
                 ->get();

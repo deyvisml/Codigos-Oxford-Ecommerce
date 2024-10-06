@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Laravel\Socialite\Facades\Socialite; // google auth
+use Illuminate\Http\Request; // google auth
+use Laravel\Socialite\Two\InvalidStateException;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
@@ -23,6 +24,15 @@ class LoginController extends Controller
     public function store()
     {
         $google_user = Socialite::driver('google')->user();
+        // before an error occure here because in console.cloud.google.com only https://codigosoxford.com/* was added and now also is added: https://www.codigosoxford.com/*
+        /*
+        try
+        {
+            $google_user = Socialite::driver('google')->user();
+        }
+        catch (InvalidStateException $e){
+            $google_user = Socialite::driver('google')->stateless()->user();
+        }*/
 
         $user_data = $google_user->user;
 
@@ -32,8 +42,8 @@ class LoginController extends Controller
             'first_name' => $user_data["given_name"],
             'family_name' => $user_data["family_name"],
             'picture' => $user_data["picture"],
-            'locale' => $user_data["locale"],
-            'email' => $user_data["email"]
+            'locale' => $user_data["locale"] ?? "",
+            'email' => $user_data["email"],
         ]);
 
         Auth::login($user);

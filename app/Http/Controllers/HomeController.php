@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Serie;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -15,7 +14,7 @@ class HomeController extends Controller
         $series = Serie::inRandomOrder()->limit(20)->get();
 
         // get products from 5 diferent series
-        $id_series_selected = [109, 114, 99, 105, 128, 132];
+        $id_series_selected = [109, 99, 114, 64, 132, 159, 105];
 
         $group_products = array();
 

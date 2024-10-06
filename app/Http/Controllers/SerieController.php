@@ -40,6 +40,7 @@ class SerieController extends Controller
             $product_groups[$i]["level"] = $level;
 
             $product_groups[$i]["products"] = Product::where("products.level_id", $level->id)
+                ->where("products.state_id", 1)
                 ->orderBy("products.name", "ASC")
                 ->get();
 

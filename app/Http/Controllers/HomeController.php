@@ -14,7 +14,7 @@ class HomeController extends Controller
         $series = Serie::inRandomOrder()->limit(20)->get();
 
         // get products from 5 diferent series
-        $id_series_selected = [109, 99, 114, 64, 132, 159, 105];
+        $id_series_selected = [109, 99, 114, 64, 132, 44, 105, 159];
 
         $group_products = array();
 
@@ -26,6 +26,7 @@ class HomeController extends Controller
             $group_products[$i]["products"] = Product::join("levels", "products.level_id", "=", "levels.id")
                 ->join("series", "levels.serie_id", "=", "series.id")
                 ->where("series.id", $id_series_selected[$i])
+                ->where("products.state_id", 1)
                 ->select("products.*")
                 ->orderBy("price_usd", "ASC")
                 ->get();

@@ -12,6 +12,16 @@
                 <h2 class="text-2xl font-semibold border-b-2 pb-3">
                     Compras
                 </h2>
+
+                @if (count($orders) > 0)
+                    <p class="p-2 border rounded border-neutral-300 bg-blue-100 text-blue-800 mt-5">
+                        <span class="font-semibold">Nota 1:</span> Si el estado del pedido ya marca como "ENTREGADO", verifica tu bandeja de entrada y la carpeta de <b>SPAM</b>, en otro caso espere a que el pedido sea procesado por el administrador.
+                    </p>
+
+                    <p class="p-2 border rounded border-neutral-300 bg-blue-100 text-blue-800 mt-5">
+                        <span class="font-semibold">Nota 2:</span> Si eres de Perú recuerda que puedes realizar tus proximas compras por Whatsapp al <a href="https://wa.me/51938544411" target="_blank" class="underline text-sky-800">+51 938 544 411</a>
+                    </p>
+                @endif
     
                 <ul class="mt-5">
                     @if (count($orders) > 0)

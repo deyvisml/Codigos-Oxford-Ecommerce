@@ -12,7 +12,7 @@
             (<span class="text-sky-900 font-semibold">{{ auth()->user()->email }}</span>)
             una vez que se haya verificado el pago. Agradecemos su confianza en nuestro servicio.
         </p>
-        <a class="underline text-sky-800" href="{{ route('purchase.list') }}">Mis compras</a>
+        <p>➡️<a class="underline text-sky-800" href="{{ route('purchase.list') }}"> Mis compras </a>⬅️</p>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="w-52 h-52 text-neutral-300">
             <path stroke-linecap="round" stroke-linejoin="round"

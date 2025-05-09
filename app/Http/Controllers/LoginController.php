@@ -40,8 +40,8 @@ class LoginController extends Controller
             'google_id' => $google_user->id,
         ], [
             'first_name' => $user_data["given_name"],
-            'family_name' => $user_data["family_name"],
-            'picture' => $user_data["picture"],
+            'family_name' => $user_data["family_name"] ?? "",
+            'picture' => $user_data["picture"] ?? "",
             'locale' => $user_data["locale"] ?? "",
             'email' => $user_data["email"],
         ]);
